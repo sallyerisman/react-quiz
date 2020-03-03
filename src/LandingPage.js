@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import GetQuiz from './components/GetQuiz'
 
 class LandingPage extends React.Component{
     render(){
@@ -8,11 +7,11 @@ class LandingPage extends React.Component{
 				<div className="container">
 					<h1>Quiz</h1>
 					<main className="row">
-						<div className="col-sm-12 col-md-6">
-							<Link to="/create">Make your own quiz</Link>
+						<div className="card col-sm-12 col-md-5">
+							<Link to="/create"><p>Make your own quiz</p></Link>
 						</div>
-						<div className="col-sm-12 col-md-6">
-							<GetQuiz />
+						<div className="card col-sm-12 col-md-5">
+							<Link to="/play">Try a quiz</Link>
 						</div>
 					</main>
 				</div>

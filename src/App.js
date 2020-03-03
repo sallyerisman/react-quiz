@@ -1,16 +1,17 @@
 import React from 'react';
 import { Route, BrowserRouter } from 'react-router-dom';
 import LandingPage from './LandingPage'
-import MakeQuiz from './components/MakeQuiz';
+import QuizForm from './components/QuizForm'
+import PlayQuiz from './components/PlayQuiz'
 
 class App extends React.Component{
     render(){
         return (
 			<BrowserRouter>
-				<div className="container">
-					<h1>Quiz</h1>
+				<div>
 					<Route exact path="/" component={LandingPage} />
-					<Route path="/create" component={MakeQuiz} />
+					<Route path="/create" component={QuizForm} />
+					<Route path="/play" component={PlayQuiz} />
 				</div>
 			</BrowserRouter>
         );
