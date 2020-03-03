@@ -35,7 +35,11 @@
     ]
   },
   "devDependencies": {
+<<<<<<< HEAD
     "axios": "^0.19.2",
     "firebase": "^7.9.3"
+=======
+    "axios": "^0.19.2"
+>>>>>>> 980a6748bf955298aaf8acad40e31b1ed0c8b8b8
   }
 }
