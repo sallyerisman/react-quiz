@@ -10,6 +10,7 @@
     "node-sass": "^4.13.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0"
   },
   "scripts": {
@@ -34,6 +35,11 @@
     ]
   },
   "devDependencies": {
+<<<<<<< HEAD
+    "axios": "^0.19.2",
+    "firebase": "^7.9.3"
+=======
     "axios": "^0.19.2"
+>>>>>>> 980a6748bf955298aaf8acad40e31b1ed0c8b8b8
   }
 }
