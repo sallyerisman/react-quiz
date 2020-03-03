@@ -1,1 +1,41 @@
 @import '~bootstrap/scss/bootstrap';
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a{
+  color: white;
+  text-decoration: none;
+  border-radius: 0.5rem;
+}
+a:hover{
+  background-color: rgb(228, 145, 135);
+  color: white;
+  text-decoration: none !important;
+}
+
+body{
+  background-color: #008C76FF;
+  color: white;
+  text-align: center;
+}
+
+h2{
+  margin-top: 110px;
+}
+
+main{
+  display: flex;
+  justify-content: space-around;
+}
+
+.card{
+  border: none;
+  margin-bottom: 2rem;
+  background-color: #FAA094FF;
+  height: 300px;
+}
+
