@@ -8,7 +8,7 @@ class LandingPage extends React.Component{
 					<h1>Quiz</h1>
 					<main className="row">
 						<div className="card col-sm-12 col-md-5">
-							<Link to="/create"><p>Make your own quiz</p></Link>
+							<Link to="/create">Make your own quiz</Link>
 						</div>
 						<div className="card col-sm-12 col-md-5">
 							<Link to="/play">Try a quiz</Link>
