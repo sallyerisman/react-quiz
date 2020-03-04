@@ -11,7 +11,7 @@ class LandingPage extends React.Component{
 							<Link to="/create">Make your own quiz</Link>
 						</div>
 						<div className="card col-sm-12 col-md-5">
-							<Link to="/play">Try a quiz</Link>
+							<Link to="/show">Try a quiz</Link>
 						</div>
 					</main>
 				</div>

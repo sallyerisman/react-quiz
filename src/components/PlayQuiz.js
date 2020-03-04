@@ -4,8 +4,15 @@ import { db } from "../modules/firebase"
 class PlayQuiz extends React.Component{
 
 	state = {
-		quizzes: [],
+		// quizzes: [],
 		quiz: [],
+		name: "",
+		quizItem: {
+			question: "",
+			correctAnswer: "",
+			options: [],
+		},
+		answer: null,
 	}
 
 	componentDidMount() {
@@ -24,12 +31,14 @@ class PlayQuiz extends React.Component{
 	// 	})
 	// }
 
-	getQuizzes = () => {
+	// handleChange = (e) => {
 
+	// }
+
+	getQuizzes = (name) => {
 		// this.showSpinner();
 
 		db.collection('quizzes').doc('quiz1').collection('quizItems').get().then((querySnapshot) => {
-
 			const quiz = [];
 
 			querySnapshot.forEach((item) => {
@@ -39,7 +48,7 @@ class PlayQuiz extends React.Component{
 				const quizItem = {
 					id: item.id,
 					question: item.data().question,
-					answer: item.data().answer,
+					correctAnswer: item.data().answer,
 					options: options
 				}
 				quiz.push(quizItem)
@@ -60,7 +69,7 @@ class PlayQuiz extends React.Component{
 					<label>
 						<input
 							type="radio"
-							name="options"
+							id="option"
 							value={option}
 							// onChange={this.handleChange}
 						/> {option}
@@ -78,7 +87,9 @@ class PlayQuiz extends React.Component{
 
 		return(
 			<div>
-				<h1>My quiz</h1>
+				<h1>All quizzes</h1>
+				<h2>This is play mode!!!</h2>
+
 				{eachQuizItem}
 			</div>
 		)
