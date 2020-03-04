@@ -29,9 +29,22 @@ body{
   text-align: center;
 }
 
+form{
+	margin: 5rem 0;
+}
+
 h1{
 	font-size: 4rem;
 	margin: 1.5rem;
+}
+
+.btn{
+	background-color: #FAA094FF;
+}
+
+.btn:hover{
+	background-color: rgb(228, 145, 135);
+	color: white;
 }
 
 .card{
@@ -45,5 +58,9 @@ h1{
 
 .row{
 	justify-content: space-around;
+}
+
+.submit{
+	width: 100%;
 }
 
