@@ -15,41 +15,58 @@ class QuizForm extends React.Component{
 
 	}
 
+	handleChangeInput = (e, index) => {
+		let inputs = this.state.input
+		inputs[index] = e.target.value
+
+		this.setState({
+			input: inputs
+		})
+
+	}
+
 	handleChange = (e) => {
+
 		this.setState({
 			[e.target.id]: e.target.value
 		})
 	}
 
-	handleClick = () => {
+	// handleClick = () => {
 
-		const id = Math.random()*100
+	// 	const id = Math.random()*100
 
-		const array = this.state.input
-		array.push(
-			<div className="input-group mb-3" key={id}>
-					<input
-						id="answer"
-						type="text"
-						className="form-control"
-						placeholder="Provide the right answer"
-						onChange={this.handleChange}
-						value={this.state.answer}
-					/>
+	// 	const array = this.state.input
+	// 	array.push(
+	// 		<div className="input-group mb-3" key={id}>
+	// 				<input
+	// 					id="answer"
+	// 					type="text"
+	// 					className="form-control"
+	// 					placeholder="Provide the right answer"
+	// 					onChange={this.handleChange}
+	// 					value={this.state.answer}
+	// 				/>
 
-					<div className="input-group-append">
-						<button
-							className="btn btn-secondary"
-							type="button"
-							id="button-addon2"
-							onClick={this.handleClick}
-						>Add more answers
-						</button>
-					</div>
-				</div>
-		)
+	// 				<div className="input-group-append">
+	// 					<button
+	// 						className="btn btn-secondary"
+	// 						type="button"
+	// 						id="button-addon2"
+	// 						onClick={this.handleClick}
+	// 					>Add more answers
+	// 					</button>
+	// 				</div>
+	// 			</div>
+	// 	)
+	// 	this.setState({
+	// 		input: array,
+	// 	})
+	// }
+
+	handleClick = (e) => {
 		this.setState({
-			input: array,
+			input: [...this.state.input, '']
 		})
 	}
 
@@ -124,7 +141,7 @@ class QuizForm extends React.Component{
 									className="btn btn-secondary"
 									type="button"
 									id="button-addon2"
-									onClick={this.handleClick}
+									onClick={(e) => {this.handleClick(e)}}
 								>Add more answers
 								</button>
 							</div>
@@ -132,10 +149,38 @@ class QuizForm extends React.Component{
 						</div>
 
 						{
+							this.state.input.map((item, index) => {
+								return (
+									<div key={index} className="input-group mt-3 mb-3">
+										<input
+											id="answer"
+											type="text"
+											className="form-control"
+											placeholder="Add more answers"
+											onChange={(e, index) => {this.handleChangeInput(e, index)}}
+											value={this.state.input[item]}
+										/>
+
+										<div className="input-group-append">
+											<button
+												className="btn btn-secondary"
+												type="button"
+												id="button-addon2"
+												onClick={(e) => {this.handleClick(e)}}
+											>Add more answers
+											</button>
+										</div>
+									</div>
+								)
+
+							})
+						}
+
+						{/* {
 							this.state.input.map(input => {
 								return input
 							})
-						}
+						} */}
 
 						<button
 							className="btn btn-secondary submit"
@@ -145,34 +190,6 @@ class QuizForm extends React.Component{
 						</button>
 					</form>
 				}
-
-				{/* <form>
-				<div>
-					{
-						this.state.ifSubmitted ?
-							this.state.questions.map(question => {
-								return <div>
-								<p>{question}</p>
-										<label>
-											<input type="radio" />{this.state.answers}
-										</label>
-										</div>
-
-							})
-						: ''
-					}
-					{
-						this.state.ifClicked ?
-							this.state.answers.map(answer => {
-								return 	<label>
-											<input type="radio" />{answer}
-										</label>
-							})
-						: ''
-					}
-					</div>
-				</form> */}
-
 			</div>
 
 		)
