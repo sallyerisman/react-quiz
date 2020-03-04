@@ -29,7 +29,7 @@ class QuizForm extends React.Component{
 		array.push(
 			<div className="input-group mb-3" key={id}>
 					<input
-						id={this.state.answer}
+						id="answer"
 						type="text"
 						className="form-control"
 						placeholder="Provide the right answer"
@@ -72,16 +72,6 @@ class QuizForm extends React.Component{
 	}
 
 	render(){
-
-
-		// const answers = [...this.state.answers, this.state.answer]
-
-		// this.setState({
-		// 	answer: '',
-		// 	answers: answers,
-		// 	ifClicked: true,
-		// })
-
 		return(
 			<div className="container">
 				{
@@ -182,6 +172,7 @@ class QuizForm extends React.Component{
 					}
 					</div>
 				</form> */}
+
 			</div>
 
 		)
