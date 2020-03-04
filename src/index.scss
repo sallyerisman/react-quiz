@@ -9,7 +9,7 @@
 a{
   align-items: center;
   border-radius: 0.5rem;
-  color: white;
+  color: #FFDDE2FF;
   display: flex;
   font-size: 2rem;
   height: 100%;
@@ -25,11 +25,12 @@ a:hover{
 
 body{
   background-color: #008C76FF;
-  color: white;
+  color: #FFDDE2FF;
   text-align: center;
 }
 
 h1{
+	font-size: 4rem;
 	margin: 1.5rem;
 }
 
@@ -38,8 +39,11 @@ h1{
   margin: 1.5rem;
   background-color: #FAA094FF;
   height: 300px;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 0;
 }
 
+.row{
+	justify-content: space-around;
+}
 
