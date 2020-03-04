@@ -2,13 +2,13 @@ import firebase from "firebase/app"
 import "firebase/firestore"
 
 const config = {
-    apiKey: "AIzaSyCUSjH2uGCJ1SBeLhRK3rW0necM3Xsjzw0",
-    authDomain: "my-to-dos-67dd0.firebaseapp.com",
-    databaseURL: "https://my-to-dos-67dd0.firebaseio.com",
-    projectId: "my-to-dos-67dd0",
-    storageBucket: "my-to-dos-67dd0.appspot.com",
-    messagingSenderId: "23336981121",
-    appId: "1:23336981121:web:b474d9079b4805915d7380"
+    apiKey: "AIzaSyAsYzp4vw_xXxDPkaMpzqgphCB43qslIrU",
+    authDomain: "react-quiz-f7ae4.firebaseapp.com",
+    databaseURL: "https://react-quiz-f7ae4.firebaseio.com",
+    projectId: "react-quiz-f7ae4",
+    storageBucket: "react-quiz-f7ae4.appspot.com",
+    messagingSenderId: "893587252221",
+    appId: "1:893587252221:web:bab87cf33e95e0e1f4ef94"
 };
 
 // Initialize firebase:
