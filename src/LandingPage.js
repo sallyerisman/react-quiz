@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-<<<<<<< HEAD
 import Navigation from './components/Navigation'
 import { auth } from './modules/firebase'
 
@@ -43,21 +42,6 @@ class LandingPage extends React.Component{
 
 				<h1>Quiz</h1>
 
-=======
-// import { auth } from "./modules/firebase"
-
-class LandingPage extends React.Component{
-
-	// state = {
-	// 	email: "",
-	// 	password: "",
-	// }
-
-    render(){
-        return (
-			<div className="container">
-				<h1>Quiz</h1>
->>>>>>> c464102aa879575350e9b7f656aa87747d1c05de
 				<main className="row">
 					<div className="card col-sm-12 col-md-5">
 						<Link to="/create">Make your own quiz</Link>
