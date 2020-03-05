@@ -28,9 +28,7 @@ class LandingPage extends React.Component{
     render(){
         return (
 			<div>
-
 				<Navigation />
-
 				<div className="login-paragraph">
 					{this.state.user
 					?
@@ -39,7 +37,6 @@ class LandingPage extends React.Component{
 					(<p>No one is logged in!</p>)
 					}
 				</div>
-
 				<h1>Quiz</h1>
 
 				<main className="row">
