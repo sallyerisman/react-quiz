@@ -1,7 +1,6 @@
 import React from 'react'
 import { db } from "../modules/firebase"
 import { Link } from 'react-router-dom';
-import PlayQuiz from './PlayQuiz';
 
 class ShowQuizzes extends React.Component{
 
@@ -32,8 +31,7 @@ class ShowQuizzes extends React.Component{
 		})
 	}
 
-	render(){
-
+	render() {
 		const showName = this.state.quizNames.map((id) => {
 			return (
 				<div className="card col-sm-12 col-md-5">

@@ -1,5 +1,6 @@
 import firebase from "firebase/app"
 import "firebase/firestore"
+import "firebase/auth"
 
 const config = {
     apiKey: "AIzaSyAsYzp4vw_xXxDPkaMpzqgphCB43qslIrU",
@@ -11,10 +12,9 @@ const config = {
     appId: "1:893587252221:web:bab87cf33e95e0e1f4ef94"
 };
 
-// Initialize firebase:
 firebase.initializeApp(config);
 
-// Create shortcut:
 const db = firebase.firestore();
+const auth = firebase.auth();
 
-export { db }
+export { db, auth }
