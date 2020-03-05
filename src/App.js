@@ -11,7 +11,7 @@ class App extends React.Component{
     render(){
         return (
 			<BrowserRouter>
-				<div className="container">
+				<div>
 					<Route exact path="/" component={LandingPage} />
 					<Route path="/create" component={QuizForm} />
 					<Route path="/show" component={ShowQuizzes} />

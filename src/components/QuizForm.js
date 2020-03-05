@@ -1,4 +1,6 @@
 import React from 'react'
+import RenderQuizQuestion from './RenderQuizQuestion';
+// import RenderQuizQuestion from './RenderQuizQuestion'
 
 class QuizForm extends React.Component{
 
@@ -6,18 +8,17 @@ class QuizForm extends React.Component{
 
 		quizName: '',
 		quizNameBoolean: false,
-		questions: [],
 		question: '',
-		answers: [],
-		answer: '',
-		ifSubmitted: false,
+		rightAnswer: '',
 		input: [],
+		isSubmitted: false,
 
 	}
 
 	handleChangeInput = (e, index) => {
 		let inputs = this.state.input
-		inputs[index] = e.target.value
+		// inputs[index] = e.target.value
+		inputs.push(e.target.value)
 
 		this.setState({
 			input: inputs
@@ -31,38 +32,6 @@ class QuizForm extends React.Component{
 			[e.target.id]: e.target.value
 		})
 	}
-
-	// handleClick = () => {
-
-	// 	const id = Math.random()*100
-
-	// 	const array = this.state.input
-	// 	array.push(
-	// 		<div className="input-group mb-3" key={id}>
-	// 				<input
-	// 					id="answer"
-	// 					type="text"
-	// 					className="form-control"
-	// 					placeholder="Provide the right answer"
-	// 					onChange={this.handleChange}
-	// 					value={this.state.answer}
-	// 				/>
-
-	// 				<div className="input-group-append">
-	// 					<button
-	// 						className="btn btn-secondary"
-	// 						type="button"
-	// 						id="button-addon2"
-	// 						onClick={this.handleClick}
-	// 					>Add more answers
-	// 					</button>
-	// 				</div>
-	// 			</div>
-	// 	)
-	// 	this.setState({
-	// 		input: array,
-	// 	})
-	// }
 
 	handleClick = (e) => {
 		this.setState({
@@ -79,16 +48,17 @@ class QuizForm extends React.Component{
 
 	handleSubmit = (e) => {
 		e.preventDefault()
-		const questions = [...this.state.questions, this.state.question]
 
 		this.setState({
-			question: '',
-			questions: questions,
-			ifSubmitted: true,
+			isSubmitted: true,
 		})
 	}
 
+
+
+
 	render(){
+		console.log(this.state.input)
 		return(
 			<div className="container">
 				{
@@ -128,12 +98,12 @@ class QuizForm extends React.Component{
 						/>
 						<div className="input-group mt-3 mb-3">
 							<input
-								id="answer"
+								id="rightAnswer"
 								type="text"
 								className="form-control"
 								placeholder="Provide the right answer"
 								onChange={this.handleChange}
-								value={this.state.answer}
+								value={this.state.rightAnswer}
 							/>
 
 							<div className="input-group-append">
@@ -190,9 +160,52 @@ class QuizForm extends React.Component{
 						</button>
 					</form>
 				}
+
+				{
+					this.state.isSubmitted
+					? <RenderQuizQuestion
+						rightAnswer={this.state.rightAnswer}
+						question={this.state.question}
+						input={this.state.input}
+					/>
+					: ''
+				}
+
 			</div>
 
 		)
+
+	// handleClick = () => {
+
+	// 	const id = Math.random()*100
+
+	// 	const array = this.state.input
+	// 	array.push(
+	// 		<div className="input-group mb-3" key={id}>
+	// 				<input
+	// 					id="answer"
+	// 					type="text"
+	// 					className="form-control"
+	// 					placeholder="Provide the right answer"
+	// 					onChange={this.handleChange}
+	// 					value={this.state.answer}
+	// 				/>
+
+	// 				<div className="input-group-append">
+	// 					<button
+	// 						className="btn btn-secondary"
+	// 						type="button"
+	// 						id="button-addon2"
+	// 						onClick={this.handleClick}
+	// 					>Add more answers
+	// 					</button>
+	// 				</div>
+	// 			</div>
+	// 	)
+	// 	this.setState({
+	// 		input: array,
+	// 	})
+	// }
 	}
 }
 
