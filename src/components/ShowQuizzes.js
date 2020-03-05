@@ -1,12 +1,12 @@
 import React from 'react'
 import { db } from "../modules/firebase"
 import { Link } from 'react-router-dom';
+import PlayQuiz from "./PlayQuiz"
 
 class ShowQuizzes extends React.Component{
 
 	state = {
 		quizNames: [],
-		name: "",
 	}
 
 	componentDidMount() {
@@ -18,24 +18,24 @@ class ShowQuizzes extends React.Component{
 			const quizNames = [];
 		  	snapshot.forEach((doc) => {
 				const eachName = {
-					name: doc.id,
+					title: doc.data().title,
+					id: doc.id
 				}
-
 				quizNames.push(eachName)
-
-				this.setState({
-					quizNames: quizNames,
-
-				})
 			});
+
+			this.setState({
+				quizNames: quizNames,
+
+			})
 		})
 	}
 
 	render() {
-		const showName = this.state.quizNames.map((id) => {
+		const showName = this.state.quizNames.map((name) => {
 			return (
 				<div className="card col-sm-12 col-md-5">
-				<Link to="/play">{id.name}</Link>
+				<Link to={"/play/" + name.id}>{name.title}</Link>
 				</div>
 			)
 		})

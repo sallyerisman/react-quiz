@@ -2,11 +2,15 @@ import React from 'react'
 import { db } from "../modules/firebase"
 
 class PlayQuiz extends React.Component{
+	constructor(props) {
+		super(props);
+		this.state.quiz_id = this.props.match.params.id;
+	}
 
 	state = {
 		quiz: [],
 		title: "",
-		answer: null,
+		// answer: null,
 	}
 
 	componentDidMount() {
@@ -14,12 +18,10 @@ class PlayQuiz extends React.Component{
 	}
 
 	// handleChange = (e) => {
-
 	// }
 
 	getQuiz = () => {
-		console.log("this.props", this.props)
-		db.collection('quizzes').doc('newTemplateQuiz').get()
+		db.collection('quizzes').doc(this.state.quiz_id).get()
 		.then((snapshot) => {
 			const quiz = [];
 
@@ -31,9 +33,9 @@ class PlayQuiz extends React.Component{
 				}
 				quiz.push(quizItem)
 			});
-
 			this.setState({
 				quiz: quiz,
+				title: snapshot.data().title
 			})
 		})
 		.catch((err) => {
@@ -64,7 +66,7 @@ class PlayQuiz extends React.Component{
 		})
 		return(
 			<div>
-				<h1>Name of quiz</h1>
+				<h1>{this.state.title}</h1>
 				{eachQuizItem}
 			</div>
 		)
