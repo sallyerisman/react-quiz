@@ -15,8 +15,8 @@ class App extends React.Component{
 					<Route exact path="/" component={LandingPage} />
 					<Route path="/create" component={QuizForm} />
 					<Route path="/show" component={ShowQuizzes} />
-					<Route path="/play" component={PlayQuiz} />
 					<Route path='/login' component={Login} />
+					<Route path="/play/:id" component={PlayQuiz} />
 				</div>
 			</BrowserRouter>
         );

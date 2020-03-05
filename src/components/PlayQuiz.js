@@ -2,80 +2,60 @@ import React from 'react'
 import { db } from "../modules/firebase"
 
 class PlayQuiz extends React.Component{
+	constructor(props) {
+		super(props);
+		this.state.quiz_id = this.props.match.params.id;
+	}
 
 	state = {
-		// quizzes: [],
 		quiz: [],
-		name: "",
-		quizItem: {
-			question: "",
-			correctAnswer: "",
-			options: [],
-		},
-		answer: null,
+		title: "",
+		// answer: null,
 	}
 
 	componentDidMount() {
-        this.getQuizzes();
+        this.getQuiz();
 	}
 
-	// showSpinner = () => {
-	// 	this.setState({
-	// 		showSpinner: true,
-	// 	})
-	// }
-
-	// hideSpinner = () => {
-	// 	this.setState({
-	// 		showSpinner: false,
-	// 	})
-	// }
-
 	// handleChange = (e) => {
-
 	// }
 
-	getQuizzes = (name) => {
-		// this.showSpinner();
-
-		db.collection('quizzes').doc('quiz1').collection('quizItems').get().then((querySnapshot) => {
+	getQuiz = () => {
+		db.collection('quizzes').doc(this.state.quiz_id).get()
+		.then((snapshot) => {
 			const quiz = [];
 
-			querySnapshot.forEach((item) => {
-				const options = item.data().options.map((option) => {
-					return option;
-				})
+			snapshot.data().quizItems.map((item) => {
 				const quizItem = {
-					id: item.id,
-					question: item.data().question,
-					correctAnswer: item.data().answer,
-					options: options
+					question: item.quizItem.question,
+					correctAnswer: item.quizItem.correctAnswer,
+					options: [item.quizItem.options]
 				}
 				quiz.push(quizItem)
 			});
-
 			this.setState({
 				quiz: quiz,
+				title: snapshot.data().title
 			})
-
-		// 	this.hideSpinner();
 		})
+		.catch((err) => {
+			console.log('Error getting documents', err);
+		});
 	}
 
-	render(){
+	render() {
 		const eachQuizItem = this.state.quiz.map((item) => {
 			const eachOption = item.options.map((option) => {
-				return (
-					<label>
+				return option.map((x, i) =>
+					<label key={i}>
 						<input
 							type="radio"
-							id="option"
-							value={option}
-							// onChange={this.handleChange}
-						/> {option}
-                	</label>
-
-				)
+							name="option"
+							value={x}
+							// onChange={this.handleChange} />{x}
+						/> {x}
+					</label>
+				);
 			})
 			return (
 				<form>
@@ -84,12 +64,9 @@ class PlayQuiz extends React.Component{
 				</form>
 			)
 		})
-
 		return(
 			<div>
-				<h1>All quizzes</h1>
-				<h2>This is play mode!!!</h2>
-
+				<h1>{this.state.title}</h1>
 				{eachQuizItem}
 			</div>
 		)
