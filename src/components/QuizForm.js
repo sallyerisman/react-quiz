@@ -1,6 +1,5 @@
 import React from 'react'
 import RenderQuizQuestion from './RenderQuizQuestion';
-// import RenderQuizQuestion from './RenderQuizQuestion'
 
 class QuizForm extends React.Component{
 
@@ -17,8 +16,7 @@ class QuizForm extends React.Component{
 
 	handleChangeInput = (e, index) => {
 		let inputs = this.state.input
-		// inputs[index] = e.target.value
-		inputs.push(e.target.value)
+		inputs[index] = e.target.value
 
 		this.setState({
 			input: inputs
@@ -33,9 +31,9 @@ class QuizForm extends React.Component{
 		})
 	}
 
-	handleClick = (e) => {
+	handleClick = (e, index) => {
 		this.setState({
-			input: [...this.state.input, '']
+			input: [...this.state.input, this.state.input[index]]
 		})
 	}
 
@@ -58,7 +56,6 @@ class QuizForm extends React.Component{
 
 
 	render(){
-		console.log(this.state.input)
 		return(
 			<div className="container">
 				{
@@ -77,7 +74,7 @@ class QuizForm extends React.Component{
 							<div className="input-group-append">
 								<button
 									className="btn btn-secondary"
-									type="button"
+									type="submit"
 									id="button-addon2"
 								>Add quiz
 								</button>
@@ -111,7 +108,7 @@ class QuizForm extends React.Component{
 									className="btn btn-secondary"
 									type="button"
 									id="button-addon2"
-									onClick={(e) => {this.handleClick(e)}}
+									onClick={(e, index) => {this.handleClick(e, index)}}
 								>Add more answers
 								</button>
 							</div>
@@ -136,7 +133,7 @@ class QuizForm extends React.Component{
 												className="btn btn-secondary"
 												type="button"
 												id="button-addon2"
-												onClick={(e) => {this.handleClick(e)}}
+												onClick={(e, index) => {this.handleClick(e, index)}}
 											>Add more answers
 											</button>
 										</div>

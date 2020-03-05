@@ -6,17 +6,17 @@ class RenderQuizQuestion extends React.Component{
 
 
 
-		console.log('from render', this.props.question)
-		console.log('from render', this.props.rightAnswer)
-		console.log('from render', this.props.input[0])
+		console.log('QUESTION from render', this.props.question)
+		console.log('RIGHT ANSWER from render', this.props.rightAnswer)
+		console.log('ANSWERS from render', this.props.input)
 
 		const answers = this.props.input.map((answer, index) => {
 			return 	<label key={index}>
 						<input
 							type="radio"
 							name="answer"
-							value={this.props.input[answer]}
-						/> {this.props.input[answer]}
+							value={answer}
+						/> {answer}
 					</label>
 		})
 
@@ -24,7 +24,7 @@ class RenderQuizQuestion extends React.Component{
 			<form>
 				<h2>{this.props.question}</h2>
 				<label>
-				<input type="radio" />{this.props.rightAnswer}
+					<input type="radio" />{this.props.rightAnswer}
 				</label>
 				{answers}
 			</form>
