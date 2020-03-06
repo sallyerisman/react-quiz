@@ -62,7 +62,7 @@ class PlayQuiz extends React.Component{
         })
         return(
             <div>
-			<Link to="/show">Back to quiz page</Link>
+			<Link to="/">Back to quiz page</Link>
                 <h1>{this.state.title}</h1>
                 {eachQuizItem}
             </div>
