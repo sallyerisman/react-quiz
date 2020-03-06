@@ -36,6 +36,7 @@ class ShowQuizzes extends React.Component{
         return(
             <div>
                 <h1>All quizzes</h1>
+				<Link to="/">Back to main page</Link>
                 {showName}
             </div>
         )
