@@ -1,6 +1,7 @@
 import React from 'react'
 import RenderQuiz from './RenderQuiz';
 import { db } from "../modules/firebase"
+import { Link } from 'react-router-dom';
 
 class QuizForm extends React.Component{
 
@@ -83,6 +84,8 @@ class QuizForm extends React.Component{
 
 	render() {
 		return(
+			<div>
+			<Link to="/">Back to main page</Link>
 			<div className="container">
 				<form onSubmit={this.handleQuizTitleSubmit}>
 					<div className="input-group mb-3">
@@ -179,6 +182,7 @@ class QuizForm extends React.Component{
 				}
 
 			</div>
+		</div>
 		)
 	}
 }

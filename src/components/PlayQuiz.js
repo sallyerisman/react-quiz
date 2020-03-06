@@ -1,5 +1,7 @@
 import React from 'react'
 import { db } from "../modules/firebase"
+import { Link } from 'react-router-dom';
+
 
 class PlayQuiz extends React.Component{
     constructor(props) {
@@ -60,6 +62,7 @@ class PlayQuiz extends React.Component{
         })
         return(
             <div>
+			<Link to="/">Back to quiz page</Link>
                 <h1>{this.state.title}</h1>
                 {eachQuizItem}
             </div>
