@@ -1,5 +1,6 @@
 import React from 'react'
 import { db } from "../modules/firebase"
+
 class PlayQuiz extends React.Component{
     constructor(props) {
         super(props);

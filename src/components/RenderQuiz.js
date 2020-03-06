@@ -1,32 +1,26 @@
 import React from 'react'
 
-class RenderQuizQuestion extends React.Component{
+class RenderQuiz extends React.Component {
 
-	render(){
+	render() {
+		console.log("This.props.data", this.props.data.title)
 
+		const { question, title, quizItems } = this.props.data
 
+		// const options = this.props.input.map((options, index) => {
+		// 	return 	<label key={index}>
+		// 				<input
+		// 					type="radio"
+		// 					name="answer"
+		// 					value={answer}
+		// 				/> {answer}
+		// 			</label>
+		// })
 
-		console.log('QUESTION from render', this.props.question)
-		console.log('RIGHT ANSWER from render', this.props.rightAnswer)
-		console.log('ANSWERS from render', this.props.input)
-
-		const answers = this.props.input.map((answer, index) => {
-			return 	<label key={index}>
-						<input
-							type="radio"
-							name="answer"
-							value={answer}
-						/> {answer}
-					</label>
-		})
-
-		return(
+		return (
 			<form>
-				<h2>{this.props.question}</h2>
-				<label>
-					<input type="radio" />{this.props.rightAnswer}
-				</label>
-				{answers}
+				<h1>{title}</h1>
+				<h2>{question}</h2>
 			</form>
 		)
 
@@ -59,4 +53,4 @@ class RenderQuizQuestion extends React.Component{
     }
 }
 
-export default RenderQuizQuestion
+export default RenderQuiz
