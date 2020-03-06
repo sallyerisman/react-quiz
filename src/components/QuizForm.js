@@ -7,11 +7,13 @@ class QuizForm extends React.Component{
 
 	state = {
 		title: '',
+		docId: null,
 		question: "",
 		correctAnswer: "",
 		inputField: [],
 		isSubmitted: false,
 		quizItems: [],
+		options: [],
 	}
 
 	handleChange = (e) => {
@@ -25,10 +27,13 @@ class QuizForm extends React.Component{
 
 		const newQuiz = {
 			title: this.state.title,
+			quizItems: [],
 		}
 
-		db.collection("quizzes").add( newQuiz ).then(res => {
-			console.log("My title is: ", this.state.title)
+		db.collection("quizzes").add( newQuiz ).then(docRef => {
+			this.setState({
+				docId: docRef.id,
+			});
 		}).catch(err => {
 			console.error(err)
 		})
@@ -36,49 +41,46 @@ class QuizForm extends React.Component{
 
 	handleClick = (e, index) => {
 		this.setState({
-			inputField: [...this.state.inputField, this.state.inputField[index]]
+			inputField: [...this.state.inputField, this.state.inputField[index]],
 		})
 	}
 
 	handleChangeInput = (index, e) => {
-		const options = [];
-		const option = {
-			option: e.target.value,
-			index: index,
-		}
-		options.push(option)
-
-		const quizItems = [];
-		const quizItem = {
-			question: this.state.question,
-			correctAnswer: this.state.correctAnswer,
-			options: options,
-		}
-		quizItems.push(quizItem)
-
-		// const quizItems = [];
-		// const quizItem = {
-		// 	question: this.state.question,
-		// 	correctAnswer: this.state.correctAnswer,
-		// 	options: options,
-		// }
-		// quizItems.push({quizItem})
+		const options = this.state.options;
+		options[index] = e.target.value;
 
 		this.setState({
-			quizItems: quizItems,
+			options: options,
 		})
 	}
 
 	handleSubmit = (e) => {
 		e.preventDefault()
 
+		db.collection('quizzes').doc(this.state.docId).get()
+        .then((snapshot) => {
+
+			const quizItem = {
+				question: this.state.question,
+				correctAnswer: this.state.correctAnswer,
+				options: this.state.options,
+			}
+
+			snapshot.data().quizItems.push(quizItem);
+
+			db.collection('quizzes').doc(this.state.docId).set({
+				quizItems: [quizItem],
+			}, { merge: true }).then(() => {
+				console.log("All is well!")
+			}).catch(err => {
+				console.error(err)
+			})
+		})
+
 		this.setState({
 			isSubmitted: true,
 		})
 	}
-
-
-
 
 	render() {
 		return(

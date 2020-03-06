@@ -110,6 +110,7 @@ class PlayQuiz extends React.Component{
             )
         })
         return(
+<<<<<<< HEAD
 			<div>
 				<Link to="/show">Back to quiz page</Link>
 				<form onSubmit={this.handleSubmit}>
@@ -122,6 +123,13 @@ class PlayQuiz extends React.Component{
 
 				<h1>Your score is: {this.state.points}</h1>
 			</div>
+=======
+            <div>
+			<Link to="/">Back to quiz page</Link>
+                <h1>{this.state.title}</h1>
+                {eachQuizItem}
+            </div>
+>>>>>>> master
         )
     }
 }
