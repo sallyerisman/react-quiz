@@ -1,5 +1,5 @@
 import React from 'react'
-import RenderQuiz from './RenderQuiz';
+import RenderPreview from './RenderPreview';
 import { db } from "../modules/firebase"
 import { Link } from 'react-router-dom';
 
@@ -54,32 +54,45 @@ class QuizForm extends React.Component{
 		})
 	}
 
-	handleSubmit = (e) => {
-		e.preventDefault()
-
+	getQuizItems = () => {
 		db.collection('quizzes').doc(this.state.docId).get()
         .then((snapshot) => {
 
+			const quizItems = snapshot.data().quizItems;
 			const quizItem = {
 				question: this.state.question,
 				correctAnswer: this.state.correctAnswer,
 				options: this.state.options,
 			}
 
-			snapshot.data().quizItems.push(quizItem);
+			quizItems.push(quizItem);
+			this.setQuizItems(quizItems);
+		})
+	}
 
-			db.collection('quizzes').doc(this.state.docId).set({
-				quizItems: [quizItem],
-			}, { merge: true }).then(() => {
-				console.log("All is well!")
-			}).catch(err => {
-				console.error(err)
+	setQuizItems = (quizItems) => {
+		db.collection('quizzes').doc(this.state.docId).set({
+			quizItems: quizItems,
+		}, { merge: true }).then(() => {
+			this.setState({
+				quizItems: quizItems,
 			})
+		}).catch(err => {
+			console.error(err)
 		})
 
 		this.setState({
 			isSubmitted: true,
+			inputField: [],
+			question: "",
+			correctAnswer: "",
 		})
+	}
+
+	handleSubmit = (e) => {
+		e.preventDefault()
+
+		this.getQuizItems();
 	}
 
 	render() {
@@ -172,15 +185,14 @@ class QuizForm extends React.Component{
 						className="btn btn-secondary submit"
 						type="submit"
 						id="submit-btn"
-					>Save quiz
+					>Show preview
 					</button>
 				</form>
 
 				{	this.state.isSubmitted
-						? <RenderQuiz data={this.state} />
+						? <RenderPreview docRef={this.state.docId} quizItems={this.state.quizItems} />
 						: ""
 				}
-
 			</div>
 		</div>
 		)

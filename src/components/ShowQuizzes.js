@@ -5,31 +5,31 @@ import { Link } from 'react-router-dom';
 
 class ShowQuizzes extends React.Component{
     state = {
-        quizNames: [],
+        quizTitles: [],
     }
     componentDidMount() {
-        this.getQuizNames();
+        this.getQuizTitles();
     }
-    getQuizNames = () => {
+    getQuizTitles = () => {
         db.collection('quizzes').get().then((snapshot) => {
-            const quizNames = [];
+            const quizTitles = [];
             snapshot.forEach((doc) => {
-                const eachName = {
+                const eachTitle = {
                     title: doc.data().title,
                     id: doc.id
                 }
-                quizNames.push(eachName)
+                quizTitles.push(eachTitle)
             });
             this.setState({
-                quizNames: quizNames,
+                quizTitles: quizTitles,
             })
         })
     }
     render() {
-        const showName = this.state.quizNames.map((name) => {
+        const showTitle = this.state.quizTitles.map((title) => {
             return (
                 <div className="card col-sm-12 col-md-5">
-                <Link to={"/play/" + name.id}>{name.title}</Link>
+                <Link to={"/play/" + title.id}>{title.title}</Link>
                 </div>
             )
         })
@@ -37,7 +37,7 @@ class ShowQuizzes extends React.Component{
             <div>
                 <h1>All quizzes</h1>
 				<Link to="/">Back to main page</Link>
-                {showName}
+                {showTitle}
             </div>
         )
     }

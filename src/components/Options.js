@@ -2,22 +2,21 @@ import React from "react"
 
 class Options extends React.Component {
 	render() {
-		console.log("prop.options", this.props.options)
+		const options = this.props.options.map((option, j) => {
+			return (
+				<label key={j}>
+					<input
+						type="radio"
+					/> {option}
+				</label>
+			)
+		})
+
 		return (
-			<div></div>
+			<div>
+				{options}
+			</div>
 		)
-		// return (
-		// 	{item.options.map((option, i) => {
-		// 		return (
-		// 			<label key={i}>
-		// 				<input
-		// 				type="radio"
-		// 				name="option"
-		// 				/> {option}
-		// 			</label>
-		// 		)
-		// 	})}
-		// )
 	}
 }
 
