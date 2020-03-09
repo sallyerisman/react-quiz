@@ -1,5 +1,6 @@
 import React from 'react'
 import { auth } from '../modules/firebase'
+import { Link } from 'react-router-dom';
 
 class Login extends React.Component{
 
@@ -60,6 +61,8 @@ class Login extends React.Component{
                     </div>
 
                 </form>
+				<h2>Ore try a quiz without login</h2>
+				<Link to="/show">Try a quiz</Link>
             </div>
         )
     }
