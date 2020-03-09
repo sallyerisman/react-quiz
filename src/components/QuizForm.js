@@ -58,13 +58,11 @@ class QuizForm extends React.Component{
 		db.collection('quizzes').doc(this.state.docId).get()
         .then((snapshot) => {
 
-			const options = this.state.options;
-
 			const quizItems = snapshot.data().quizItems;
 			const quizItem = {
 				question: this.state.question,
 				correctAnswer: this.state.correctAnswer,
-				options: this.state.options,
+				options: [...this.state.options, this.state.correctAnswer],
 				id: this.state.quizItems.length + 1,
 			}
 
@@ -79,16 +77,14 @@ class QuizForm extends React.Component{
 		}, { merge: true }).then(() => {
 			this.setState({
 				quizItems: quizItems,
+				isSubmitted: true,
+				inputField: [],
+				question: "",
+				correctAnswer: "",
+				options: [],
 			})
 		}).catch(err => {
 			console.error(err)
-		})
-
-		this.setState({
-			isSubmitted: true,
-			inputField: [],
-			question: "",
-			correctAnswer: "",
 		})
 	}
 
