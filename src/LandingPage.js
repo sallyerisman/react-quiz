@@ -10,31 +10,38 @@ class LandingPage extends React.Component{
 	}
 
 	componentDidMount() {
-		auth.onAuthStateChanged(authUser => {
+		this.onAuthStateChangedListener = auth.onAuthStateChanged(authUser => {
 			if(authUser){
 				this.setState({
 					user: {
 						email: authUser.email
-					}
+					},
+					currentUser: auth.currentUser,
 				})
 			}else {
 				this.setState({
 					user: null,
+					currentUser: auth.currentUser,
 				})
 			}
 		})
 	}
 
+	componentWillUnmount() {
+		this.onAuthStateChangedListener();
+	}
+
     render(){
         return (
 			<div>
-				<Navigation />
+				<Navigation user={this.state.user} />
 				<div className="login-paragraph">
-					{this.state.user
-					?
-					(<p>You are logged in as {this.state.user.email}!</p>)
-					:
-					(<p>No one is logged in!</p>)
+					{
+						this.state.user
+						?
+						(<p>You are logged in as {this.state.user.email}!</p>)
+						:
+						(<p>No one is logged in!</p>)
 					}
 				</div>
 				<h1>Quiz</h1>
