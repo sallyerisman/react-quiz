@@ -14,7 +14,7 @@ class PlayOptions extends React.Component {
 				</label>
 			)
 		})
-		console.log("OPTIONS outside const",options)
+
 		return (
 			<div>
 				{options}
