@@ -15,7 +15,7 @@ class PlayQuiz extends React.Component{
 		points: null,
 		answers: [],
 	}
-	
+
     componentDidMount() {
         this.getQuiz();
     }
@@ -76,6 +76,7 @@ class PlayQuiz extends React.Component{
 	}
 
     render() {
+
         const quizItem = this.state.quizItems.map((item, qiIndex) => {
 			return (
 				<div key={qiIndex}>
