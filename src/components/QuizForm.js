@@ -15,6 +15,7 @@ class QuizForm extends React.Component{
 		isSubmitted: false,
 		quizItems: [],
 		options: [],
+		isTitleSubmitted: false,
 	}
 
 	handleChange = (e) => {
@@ -25,6 +26,10 @@ class QuizForm extends React.Component{
 
 	handleQuizTitleSubmit = (e) => {
 		e.preventDefault()
+
+		this.setState({
+			isTitleSubmitted: true,
+		})
 
 		const newQuiz = {
 			title: this.state.title,
@@ -122,7 +127,9 @@ class QuizForm extends React.Component{
 			<div>
 			<Link to="/">Back to main page</Link>
 			<div className="container">
-				<form onSubmit={this.handleQuizTitleSubmit}>
+			{ !this.state.isTitleSubmitted
+				? (
+					<form onSubmit={this.handleQuizTitleSubmit}>
 					<div className="input-group mb-3">
 						<input
 							id="title"
@@ -143,8 +150,9 @@ class QuizForm extends React.Component{
 						</div>
 					</div>
 				</form>
-
-				<form onSubmit={this.handleSubmit}>
+				)
+				: (
+					<form onSubmit={this.handleSubmit}>
 					<h1>{this.state.title}</h1>
 					<input
 						id="question"
@@ -212,6 +220,10 @@ class QuizForm extends React.Component{
 					>Add another question
 					</button>
 				</form>
+				)
+			}
+
+
 
 				{	this.state.isSubmitted
 						? <RenderPreview quizItems={this.state.quizItems} title={this.state.title} onDelete={this.handleDeleteQuestion} />
