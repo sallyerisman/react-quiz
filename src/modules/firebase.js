@@ -18,8 +18,7 @@ firebase.initializeApp(config);
 // Create shortcut:
 const db = firebase.firestore();
 const auth = firebase.auth();
-const field = firebase.firestore.FieldValue;
 
 export { db }
 export { auth }
-export { field }
+
