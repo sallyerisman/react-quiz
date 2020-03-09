@@ -1,5 +1,5 @@
 import React from 'react'
-import Options from "./Options"
+import PreviewOptions from "./PreviewOptions"
 
 class RenderPreview extends React.Component {
 
@@ -8,12 +8,13 @@ class RenderPreview extends React.Component {
 			return (
 				<div key={i}>
 					<h2>{item.question}</h2>
-					<Options options={item.options}/>
+					<PreviewOptions options={item.options}/>
 				</div>
 			)
         })
 		return (
 			<form>
+				<h1>{this.props.title}</h1>
 				{quizItem}
 			</form>
 		)

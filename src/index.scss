@@ -1,12 +1,12 @@
 @import '~bootstrap/scss/bootstrap';
 
-*{
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-a{
+a {
   align-items: center;
   border-radius: 0.5rem;
   color: #FFDDE2FF;
@@ -17,41 +17,43 @@ a{
   text-decoration: none;
   width: 100%;
 }
-a:hover{
+
+a:hover {
   background-color: rgb(228, 145, 135);
   color: white;
   text-decoration: none !important;
 }
 
-body{
+body {
   background-color: #008C76FF;
   color: #FFDDE2FF;
   text-align: center;
 }
 
-form{
+form,
+.quiz-list{
 	margin: 5rem 0;
 	border-radius: 0.5rem;
 	background-color: #9ED9CCFF;
 	padding: 3rem;
 }
 
-h1{
+h1 {
 	color: #FAA094FF;
 	font-size: 4rem;
 	margin-bottom: 1.5rem;
 }
 
-.btn{
+.btn {
 	background-color: #FAA094FF;
 }
 
-.btn:hover{
+.btn:hover {
 	background-color: rgb(228, 145, 135);
 	color: white;
 }
 
-.card{
+.card {
   border: none;
   margin: 1.5rem;
   background-color: #FAA094FF;
@@ -60,22 +62,17 @@ h1{
   padding: 0;
 }
 
-// .container:first-child{
-// 	margin: 0;
-// 	padding: 0;
-// }
-
-.login-paragraph{
+.login-paragraph {
 	text-align: right;
 	margin-top: 0.5rem;
 }
 
-.navbar{
+.navbar {
 	background-color: #9ED9CCFF;
 	width: 100vw;
 }
 
-.nav-link{
+.nav-link {
 	color: #FAA094FF;
 	font-size: 1.5rem;
 	align-items: center;
@@ -83,24 +80,24 @@ h1{
 	text-decoration: none;
 }
 
-.nav-link:hover{
+.nav-link:hover {
 	background-color: rgb(228, 145, 135);
 	color: white;
 	text-decoration: none !important;
 	cursor: pointer;
 }
 
-.navbar-brand{
+.navbar-brand {
 	color: #FAA094FF;
 	font-size: 1.5rem;
 	width: 0;
 }
 
-.row{
+.row {
 	justify-content: space-around;
 }
 
-.submit{
+.submit {
 	width: 100%;
 }
 

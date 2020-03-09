@@ -1,12 +1,13 @@
 import React from 'react'
 import { db } from "../modules/firebase"
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
+import PlayOptions from "./PlayOptions"
 
 
 class PlayQuiz extends React.Component{
     constructor(props) {
         super(props);
-        this.state.quiz_id = this.props.match.params.id;
+        this.state.quizId = this.props.match.params.id;
     }
     state = {
         quizItems: [],
@@ -20,17 +21,17 @@ class PlayQuiz extends React.Component{
     }
 
     getQuiz = () => {
-        db.collection('quizzes').doc(this.state.quiz_id).get()
+        db.collection('quizzes').doc(this.state.quizId).get()
         .then((snapshot) => {
 			const quiz = [];
 			const answers = [];
             snapshot.data().quizItems.map((item) => {
                 const quizItem = {
-                    question: item.quizItem.question,
-                    correctAnswer: item.quizItem.correctAnswer,
-					options: [item.quizItem.options],
-					id: item.quizItem.id
-                }
+                    question: item.question,
+                    correctAnswer: item.correctAnswer,
+					options: item.options,
+				}
+
 				quiz.push(quizItem)
 				answers.push(false)
             });
@@ -74,44 +75,25 @@ class PlayQuiz extends React.Component{
 	}
 
     render() {
-        const eachQuizItem = this.state.quizItems.map((item, qiIndex) => {
-            const eachOption = item.options[0].map((option, i) => {
-                return (
-                    <label key={i}>
-                        <input
-                            type="radio"
-                            name={this.state.id}
-                            value={option}
-                            onChange={e => { this.handleChange(e, qiIndex) }}
-                        /> {option}
-                    </label>
-                )
-            })
-            return (
-                <div>
-                    <h2>{item.question}</h2>
-                        {eachOption}
-						<br></br>
-						<br></br>
-						<br></br>
-						<br></br>
-						<br></br>
-						<br></br>
-                </div>
-            )
+        const quizItem = this.state.quizItems.map((item, qiIndex) => {
+			return (
+				<div key={qiIndex}>
+					<h2>{item.question}</h2>
+					<PlayOptions options={item.options} onSelection={e => { this.handleChange(e, qiIndex) }}/>
+				</div>
+			)
         })
+
         return(
 			<div>
 				<Link to="/show">Back to quiz page</Link>
 				<form onSubmit={this.handleSubmit}>
 					<h1>{this.state.title}</h1>
-					{eachQuizItem}
+					{quizItem}
 					<button className="btn">Submit</button>
 				</form>
 
-
-
-				<h1>Your score is: {this.state.points}</h1>
+				<h3>Your score is: {this.state.points}</h3>
 			</div>
         )
     }

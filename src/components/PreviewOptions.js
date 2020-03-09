@@ -1,12 +1,13 @@
 import React from "react"
 
-class Options extends React.Component {
+class PreviewOptions extends React.Component {
 	render() {
 		const options = this.props.options.map((option, j) => {
 			return (
 				<label key={j}>
 					<input
 						type="radio"
+						name="option"
 					/> {option}
 				</label>
 			)
@@ -20,4 +21,4 @@ class Options extends React.Component {
 	}
 }
 
-export default Options
+export default PreviewOptions

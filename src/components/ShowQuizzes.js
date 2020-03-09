@@ -26,9 +26,9 @@ class ShowQuizzes extends React.Component{
         })
     }
     render() {
-        const showTitle = this.state.quizTitles.map((title) => {
+        const showTitle = this.state.quizTitles.map((title, i) => {
             return (
-                <div className="card col-sm-12 col-md-5">
+                <div key={i} className="quiz-list">
                 <Link to={"/play/" + title.id}>{title.title}</Link>
                 </div>
             )

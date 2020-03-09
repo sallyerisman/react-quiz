@@ -190,7 +190,7 @@ class QuizForm extends React.Component{
 				</form>
 
 				{	this.state.isSubmitted
-						? <RenderPreview docRef={this.state.docId} quizItems={this.state.quizItems} />
+						? <RenderPreview quizItems={this.state.quizItems} title={this.state.title} />
 						: ""
 				}
 			</div>
