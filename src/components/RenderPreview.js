@@ -9,6 +9,7 @@ class RenderPreview extends React.Component {
 				<div key={i}>
 					<h2>{item.question}</h2>
 					<PreviewOptions options={item.options}/>
+					{/* <span className="trash-icon" role="img" aria-label="Trash can" onClick={ () => {this.props.onDelete(id)}}>🗑</span> */}
 				</div>
 			)
         })

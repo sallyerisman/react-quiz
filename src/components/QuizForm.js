@@ -58,11 +58,15 @@ class QuizForm extends React.Component{
 		db.collection('quizzes').doc(this.state.docId).get()
         .then((snapshot) => {
 
+			// const ids = this.state.quizzes.map(quiz => quiz.id);
+			// const newID = Math.max(...ids) + 1;
+
 			const quizItems = snapshot.data().quizItems;
 			const quizItem = {
 				question: this.state.question,
 				correctAnswer: this.state.correctAnswer,
 				options: this.state.options,
+				id: this.state.quizItems.length + 1,
 			}
 
 			quizItems.push(quizItem);
@@ -88,6 +92,15 @@ class QuizForm extends React.Component{
 			correctAnswer: "",
 		})
 	}
+
+	// handleDeleteQuestion = (id) => {
+	// 	const doc = db.collection("quizzes").doc(this.state.docId);
+	// 	doc.data().quizItems.update({
+	// 		capital: firebase.firestore.FieldValue.delete()
+	// 	});
+
+	// 	this.getQuizItems();
+    // }
 
 	handleSubmit = (e) => {
 		e.preventDefault()
@@ -190,7 +203,7 @@ class QuizForm extends React.Component{
 				</form>
 
 				{	this.state.isSubmitted
-						? <RenderPreview quizItems={this.state.quizItems} title={this.state.title} />
+						? <RenderPreview quizItems={this.state.quizItems} title={this.state.title} onDelete={this.handleDeleteQuestion} />
 						: ""
 				}
 			</div>
