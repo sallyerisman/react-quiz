@@ -16,6 +16,7 @@ class QuizForm extends React.Component{
 		options: [],
 		isTitleSubmitted: false,
 		showSpinner: false,
+		errorMsg: false,
 	}
 
 	showSpinner = () => {
@@ -53,7 +54,9 @@ class QuizForm extends React.Component{
 				docId: docRef.id,
 			});
 		}).catch(err => {
-			console.error(err)
+			this.setState({
+				errorMsg: true,
+			})
 		})
 	}
 
@@ -84,7 +87,9 @@ class QuizForm extends React.Component{
 			this.hideSpinner();
 
 		}).catch(err => {
-			console.error(err)
+			this.setState({
+				errorMsg: true,
+			})
 		})
 	}
 
@@ -119,11 +124,15 @@ class QuizForm extends React.Component{
 					options: [],
 				})
 			}).catch(err => {
-				console.error(err)
+				this.setState({
+					errorMsg: true,
+				})
 			})
 
 		}).catch(err => {
-			console.error(err)
+			this.setState({
+				errorMsg: true,
+			})
 		})
 	}
 
@@ -139,7 +148,11 @@ class QuizForm extends React.Component{
 		}).then(() => {
 			this.hideSpinner();
 			this.getQuizItems();
-		});
+		}).catch(err => {
+			this.setState({
+				errorMsg: true,
+			})
+		})
     }
 
 	handleSubmit = (e) => {
@@ -149,11 +162,16 @@ class QuizForm extends React.Component{
 	}
 
 	render() {
+		const error = this.state.errorMessage
+		? (<p className="error-msg">Sorry, something went wrong. Please try again.</p>)
+		: ""
+
 		return(
 			<div>
 				{this.state.showSpinner
 				? (<div className="spinner">Loading...</div>)
 				: "" }
+
 				<Link to="/">Back to main page</Link>
 				<div className="container">
 					{ !this.state.isTitleSubmitted
@@ -251,8 +269,14 @@ class QuizForm extends React.Component{
 						</form>
 						)
 					}
+
 					{	this.state.isSubmitted
 							? <RenderPreview quizItems={this.state.quizItems} title={this.state.title} onDelete={this.handleDeleteQuestion} />
+							: ""
+					}
+
+					{	this.state.errorMsg
+							? {error}
 							: ""
 					}
 				</div>

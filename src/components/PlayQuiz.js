@@ -15,6 +15,7 @@ class PlayQuiz extends React.Component{
 		points: null,
 		answers: [],
 		showSpinner: false,
+		errorMsg: false,
 	}
 
     componentDidMount() {
@@ -62,7 +63,9 @@ class PlayQuiz extends React.Component{
 			this.hideSpinner();
         })
         .catch((err) => {
-            console.log('Error getting documents', err);
+            this.setState({
+				errorMsg: <p>Sorry, something went wrong. Please try again.</p>,
+			})
 		});
 	}
 
@@ -110,16 +113,20 @@ class PlayQuiz extends React.Component{
 					? (<div className="spinner">Loading...</div>)
 					: "" }
 
-				<div>
-					<Link to="/show">Back to quiz page</Link>
-					<form onSubmit={this.handleSubmit}>
-						<h1>{this.state.title}</h1>
-						{quizItem}
-						<button className="btn">Submit</button>
-					</form>
+				{this.state.errorMsg
+					? (this.state.errorMsg)
+					: (
+						<div>
+							<Link to="/show">Back to quiz page</Link>
+							<form onSubmit={this.handleSubmit}>
+							<h1>{this.state.title}</h1>
+							{quizItem}
+							<button className="btn">Submit</button>
+							</form>
 
-					<h3>Your score is: {this.state.points}/{this.state.answers.length}</h3>
-				</div>
+							<h3>Your score is: {this.state.points}/{this.state.answers.length}</h3>
+						</div>) }
+
 			</div>
         )
     }
