@@ -1,6 +1,7 @@
 import React from 'react'
 import RenderPreview from './RenderPreview';
 import { db } from "../modules/firebase"
+import { field } from "../modules/firebase"
 import { Link } from 'react-router-dom';
 
 class QuizForm extends React.Component{
@@ -57,6 +58,17 @@ class QuizForm extends React.Component{
 	getQuizItems = () => {
 		db.collection('quizzes').doc(this.state.docId).get()
         .then((snapshot) => {
+			this.setState({
+				quizItems: snapshot.data().quizItems,
+			})
+		}).catch(err => {
+			console.error(err)
+		})
+	}
+
+	setQuizItems = () => {
+		db.collection('quizzes').doc(this.state.docId).get()
+        .then((snapshot) => {
 
 			const quizItems = snapshot.data().quizItems;
 			const quizItem = {
@@ -67,40 +79,42 @@ class QuizForm extends React.Component{
 			}
 
 			quizItems.push(quizItem);
-			this.setQuizItems(quizItems);
-		})
-	}
 
-	setQuizItems = (quizItems) => {
-		db.collection('quizzes').doc(this.state.docId).set({
-			quizItems: quizItems,
-		}, { merge: true }).then(() => {
-			this.setState({
+			db.collection('quizzes').doc(this.state.docId).set({
 				quizItems: quizItems,
-				isSubmitted: true,
-				inputField: [],
-				question: "",
-				correctAnswer: "",
-				options: [],
+			}, { merge: true }).then(() => {
+				this.setState({
+					quizItems: quizItems,
+					isSubmitted: true,
+					inputField: [],
+					question: "",
+					correctAnswer: "",
+					options: [],
+				})
+			}).catch(err => {
+				console.error(err)
 			})
+
 		}).catch(err => {
 			console.error(err)
 		})
 	}
 
-	// handleDeleteQuestion = (id) => {
-	// 	const doc = db.collection("quizzes").doc(this.state.docId);
-	// 	doc.data().quizItems.update({
-	// 		capital: firebase.firestore.FieldValue.delete()
-	// 	});
+	handleDeleteQuestion = (i) => {
+		const quizItems = this.state.quizItems;
+		quizItems.splice(i, 1);
 
-	// 	this.getQuizItems();
-    // }
+		db.collection("quizzes").doc(this.state.docId).update({
+			quizItems
+		}).then(() => {
+			this.getQuizItems();
+		});
+    }
 
 	handleSubmit = (e) => {
 		e.preventDefault()
 
-		this.getQuizItems();
+		this.setQuizItems();
 	}
 
 	render() {
@@ -136,6 +150,7 @@ class QuizForm extends React.Component{
 						id="question"
 						type="text"
 						className="form-control"
+						required
 						placeholder="Write quiz question"
 						onChange={this.handleChange}
 						value={this.state.question}
@@ -145,6 +160,7 @@ class QuizForm extends React.Component{
 							id="correctAnswer"
 							type="text"
 							className="form-control"
+							required
 							placeholder="Provide the correct answer"
 							onChange={this.handleChange}
 							value={this.state.correctAnswer}
@@ -193,7 +209,7 @@ class QuizForm extends React.Component{
 						className="btn btn-secondary submit"
 						type="submit"
 						id="submit-btn"
-					>Show preview
+					>Add another question
 					</button>
 				</form>
 

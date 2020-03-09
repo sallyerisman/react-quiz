@@ -24,12 +24,22 @@ class ShowQuizzes extends React.Component{
                 quizTitles: quizTitles,
             })
         })
+	}
+
+	handleDelete = (id) => {
+		db.collection("quizzes").doc(id).delete().then(() => {
+			this.getQuizTitles();
+		}).catch(err => {
+			console.error(err)
+		})
     }
+
     render() {
         const showTitle = this.state.quizTitles.map((title, i) => {
             return (
                 <div key={i} className="quiz-list">
                 <Link to={"/play/" + title.id}>{title.title}</Link>
+				<span className="trash-icon" role="img" aria-label="Trash can" onClick={() => {this.handleDelete(title.id)}}>🗑</span>
                 </div>
             )
         })
