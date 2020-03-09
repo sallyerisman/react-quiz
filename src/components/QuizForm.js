@@ -1,7 +1,6 @@
 import React from 'react'
 import RenderPreview from './RenderPreview';
 import { db } from "../modules/firebase"
-import { field } from "../modules/firebase"
 import { Link } from 'react-router-dom';
 
 class QuizForm extends React.Component{
@@ -16,6 +15,19 @@ class QuizForm extends React.Component{
 		quizItems: [],
 		options: [],
 		isTitleSubmitted: false,
+		showSpinner: false,
+	}
+
+	showSpinner = () => {
+		this.setState({
+			showSpinner: true,
+		})
+	}
+
+	hideSpinner = () => {
+		this.setState({
+			showSpinner: false,
+		})
 	}
 
 	handleChange = (e) => {
@@ -61,17 +73,25 @@ class QuizForm extends React.Component{
 	}
 
 	getQuizItems = () => {
+		this.showSpinner();
+
 		db.collection('quizzes').doc(this.state.docId).get()
         .then((snapshot) => {
 			this.setState({
 				quizItems: snapshot.data().quizItems,
-			})
+			});
+
+			this.hideSpinner();
+
 		}).catch(err => {
 			console.error(err)
 		})
 	}
 
 	setQuizItems = () => {
+
+		this.showSpinner();
+
 		db.collection('quizzes').doc(this.state.docId).get()
         .then((snapshot) => {
 
@@ -82,6 +102,8 @@ class QuizForm extends React.Component{
 				options: [...this.state.options, this.state.correctAnswer],
 				id: this.state.quizItems.length + 1,
 			}
+
+			this.hideSpinner();
 
 			quizItems.push(quizItem);
 
@@ -106,12 +128,16 @@ class QuizForm extends React.Component{
 	}
 
 	handleDeleteQuestion = (i) => {
+
+		this.showSpinner();
+
 		const quizItems = this.state.quizItems;
 		quizItems.splice(i, 1);
 
 		db.collection("quizzes").doc(this.state.docId).update({
 			quizItems
 		}).then(() => {
+			this.hideSpinner();
 			this.getQuizItems();
 		});
     }
@@ -125,6 +151,9 @@ class QuizForm extends React.Component{
 	render() {
 		return(
 			<div>
+				{this.state.showSpinner
+				? (<div className="spinner">Loading...</div>)
+				: "" }
 				<Link to="/">Back to main page</Link>
 				<div className="container">
 					{ !this.state.isTitleSubmitted

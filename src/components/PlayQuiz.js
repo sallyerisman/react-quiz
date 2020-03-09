@@ -14,13 +14,28 @@ class PlayQuiz extends React.Component{
         title: "",
 		points: null,
 		answers: [],
+		showSpinner: false,
 	}
 
     componentDidMount() {
         this.getQuiz();
 	}
 
+	showSpinner = () => {
+		this.setState({
+			showSpinner: true,
+		})
+	}
+
+	hideSpinner = () => {
+		this.setState({
+			showSpinner: false,
+		})
+	}
+
     getQuiz = () => {
+		this.showSpinner();
+
         db.collection('quizzes').doc(this.state.quizId).get()
         .then((snapshot) => {
 			const quiz = [];
@@ -36,12 +51,15 @@ class PlayQuiz extends React.Component{
 				quiz.push(quizItem)
 				quiz.sort(function (a, b) { return 0.5 - Math.random() })
 				answers.push(false)
-            });
+			});
+
             this.setState({
 				quizItems: quiz,
 				answers: answers,
                 title: snapshot.data().title
-			})
+			});
+
+			this.hideSpinner();
         })
         .catch((err) => {
             console.log('Error getting documents', err);
@@ -86,16 +104,22 @@ class PlayQuiz extends React.Component{
 			)
         })
 
-        return(
+        return (
 			<div>
-				<Link to="/show">Back to quiz page</Link>
-				<form onSubmit={this.handleSubmit}>
-					<h1>{this.state.title}</h1>
-					{quizItem}
-					<button className="btn">Submit</button>
-				</form>
+				{this.state.showSpinner
+					? (<div className="spinner">Loading...</div>)
+					: "" }
 
-				<h3>Your score is: {this.state.points}/{this.state.answers.length}</h3>
+				<div>
+					<Link to="/show">Back to quiz page</Link>
+					<form onSubmit={this.handleSubmit}>
+						<h1>{this.state.title}</h1>
+						{quizItem}
+						<button className="btn">Submit</button>
+					</form>
+
+					<h3>Your score is: {this.state.points}/{this.state.answers.length}</h3>
+				</div>
 			</div>
         )
     }

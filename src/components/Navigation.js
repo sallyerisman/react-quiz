@@ -5,9 +5,11 @@ import { auth } from '../modules/firebase'
 const Navigation = props => {
 
     const handleSignOut = (e) => {
+		e.preventDefault()
+
         auth.signOut()
         .then(() => {
-            console.log('Signed Out')
+			alert('Signed out!')
         })
     }
 
@@ -20,26 +22,20 @@ const Navigation = props => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ml-auto">
-                        {/* {
+                        {
                             props.user
                             ? (
                                 <li className="nav-item">
-                                    <span className="nav-link" onClick={handleSignOut}>Log out</span>
-                                </li>
+									<span className="nav-link" onClick={handleSignOut}>Logout</span>
+								</li>
 
                             )
                             :(
                                 <li className="nav-item">
-                                    <NavLink to="/login" className="nav-link">Login</NavLink>
-                                </li>
+									<NavLink to="/login" className="nav-link">Login</NavLink>
+								</li>
                             )
-                        } */}
-						<li className="nav-item">
-							<NavLink to="/login" className="nav-link">Login</NavLink>
-						</li>
-						<li className="nav-item">
-							<span className="nav-link" onClick={handleSignOut}>Log out</span>
-						</li>
+                        }
                     </ul>
                 </div>
             </div>

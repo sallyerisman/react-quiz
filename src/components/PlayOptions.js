@@ -16,7 +16,7 @@ class PlayOptions extends React.Component {
 				</li>
 			)
 		})
-		console.log("OPTIONS outside const",options)
+
 		return (
 				
 			<ul className="list-group">
