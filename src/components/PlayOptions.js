@@ -7,6 +7,7 @@ class PlayOptions extends React.Component {
 				<li className="list-group-item">
 					<label key={j}>
 						<input
+							className="checkbox"
 							type="checkbox"
 							name={this.props.radioId.id}
 							value={option}
