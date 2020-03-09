@@ -18,7 +18,7 @@ class PlayQuiz extends React.Component{
 
     componentDidMount() {
         this.getQuiz();
-    }
+	}
 
     getQuiz = () => {
         db.collection('quizzes').doc(this.state.quizId).get()
@@ -34,6 +34,7 @@ class PlayQuiz extends React.Component{
 				}
 
 				quiz.push(quizItem)
+				quiz.sort(function (a, b) { return 0.5 - Math.random() })
 				answers.push(false)
             });
             this.setState({
@@ -76,7 +77,6 @@ class PlayQuiz extends React.Component{
 	}
 
     render() {
-
         const quizItem = this.state.quizItems.map((item, qiIndex) => {
 			return (
 				<div key={qiIndex}>
