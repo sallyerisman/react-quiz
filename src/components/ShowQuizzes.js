@@ -44,7 +44,7 @@ class ShowQuizzes extends React.Component{
             )
         })
         return(
-            <div>
+            <div className="container">
                 <h1>All quizzes</h1>
 				<Link to="/">Back to main page</Link>
                 {showTitle}
