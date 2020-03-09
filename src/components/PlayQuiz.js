@@ -30,6 +30,7 @@ class PlayQuiz extends React.Component{
                     question: item.question,
                     correctAnswer: item.correctAnswer,
 					options: item.options,
+					id: item.id,
 				}
 
 				quiz.push(quizItem)
@@ -79,7 +80,7 @@ class PlayQuiz extends React.Component{
 			return (
 				<div key={qiIndex}>
 					<h2>{item.question}</h2>
-					<PlayOptions options={item.options} onSelection={e => { this.handleChange(e, qiIndex) }}/>
+					<PlayOptions options={item.options} radioId={this.state.quizItems}  onSelection={e => { this.handleChange(e, qiIndex) }}/>
 				</div>
 			)
         })

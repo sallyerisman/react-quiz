@@ -58,8 +58,7 @@ class QuizForm extends React.Component{
 		db.collection('quizzes').doc(this.state.docId).get()
         .then((snapshot) => {
 
-			// const ids = this.state.quizzes.map(quiz => quiz.id);
-			// const newID = Math.max(...ids) + 1;
+			const options = this.state.options;
 
 			const quizItems = snapshot.data().quizItems;
 			const quizItem = {
