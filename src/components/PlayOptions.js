@@ -6,7 +6,7 @@ class PlayOptions extends React.Component {
 			return (
 				<label key={j}>
 					<input
-						type="radio"
+						type="checkbox"
 						name={this.props.radioId.id}
 						value={option}
 						onChange={this.props.onSelection}

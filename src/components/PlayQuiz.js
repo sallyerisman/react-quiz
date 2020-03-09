@@ -14,8 +14,8 @@ class PlayQuiz extends React.Component{
         title: "",
 		points: null,
 		answers: [],
-		correctAnswers: []
-    }
+	}
+	
     componentDidMount() {
         this.getQuiz();
     }
@@ -94,7 +94,7 @@ class PlayQuiz extends React.Component{
 					<button className="btn">Submit</button>
 				</form>
 
-				<h3>Your score is: {this.state.points}</h3>
+				<h3>Your score is: {this.state.points}/{this.state.answers.length}</h3>
 			</div>
         )
     }
