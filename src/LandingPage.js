@@ -12,7 +12,7 @@ class LandingPage extends React.Component{
 
     render(){
         return (
-			<div>
+			<div className="container">
 				<h1>Quiz</h1>
 				<main className="row">
 					<div className="card col-sm-12 col-md-5">

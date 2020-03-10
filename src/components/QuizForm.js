@@ -3,6 +3,7 @@ import RenderPreview from './RenderPreview';
 import { db } from "../modules/firebase"
 import { Link } from 'react-router-dom';
 import TitleForm from "./TitleForm"
+import QuestionForm from "./QuestionForm"
 
 class QuizForm extends React.Component{
 
@@ -95,7 +96,6 @@ class QuizForm extends React.Component{
 	}
 
 	setQuizItems = () => {
-
 		this.showSpinner();
 
 		db.collection('quizzes').doc(this.state.docId).get()
@@ -138,7 +138,6 @@ class QuizForm extends React.Component{
 	}
 
 	handleDeleteQuestion = (i) => {
-
 		this.showSpinner();
 
 		const quizItems = this.state.quizItems;
@@ -157,8 +156,7 @@ class QuizForm extends React.Component{
     }
 
 	handleSubmit = (e) => {
-		e.preventDefault()
-
+		e.preventDefault();
 		this.setQuizItems();
 	}
 
@@ -177,82 +175,29 @@ class QuizForm extends React.Component{
 				<div className="container">
 					{!this.state.isTitleSubmitted
 						? (
-							<TitleForm onSubmit={this.handleQuizTitleSubmit} onChange={this.handleChange} value={this.state.title}/>
+							<TitleForm
+								onSubmit={this.handleQuizTitleSubmit}
+								onChange={this.handleChange}
+								value={this.state.title}/>
 						)
 						: (
-							<form onSubmit={this.handleSubmit}>
-								<h1>{this.state.title}</h1>
-								<input
-									id="question"
-									type="text"
-									className="form-control"
-									required
-									placeholder="Write quiz question"
-									onChange={this.handleChange}
-									value={this.state.question}
-								/>
-							<div className="input-group mt-3 mb-3">
-								<input
-									id="correctAnswer"
-									type="text"
-									className="form-control"
-									required
-									placeholder="Provide the correct answer"
-									onChange={this.handleChange}
-									value={this.state.correctAnswer}
-								/>
-								<div className="input-group-append">
-									<button
-										className="btn btn-secondary"
-										type="button"
-										id="button-addon2"
-										onClick={this.handleClick}
-									>Add more answer options
-									</button>
-								</div>
-							</div>
-							{	this.state.inputField
-								?
-								this.state.inputField.map((item, index) => {
-									const i = index;
-									return (
-										<div key={index} className="input-group mt-3 mb-3">
-											<input
-												id="option"
-												type="text"
-												className="form-control"
-												placeholder="Add more answers"
-												onChange={(e) => {this.handleChangeInput(i, e)}}
-												value={item}
-											/>
-
-											<div className="input-group-append">
-												<button
-													className="btn btn-secondary"
-													type="button"
-													id="button-addon2"
-													onClick={this.handleClick}
-												>Add more answers
-												</button>
-											</div>
-										</div>
-									)
-								})
-								: ""
-							}
-
-							<button
-								className="btn btn-secondary submit"
-								type="submit"
-								id="submit-btn"
-							>Add another question
-							</button>
-						</form>
+							<QuestionForm
+								onSubmit={this.handleSubmit}
+								onChange={this.handleChange}
+								title={this.state.title}
+								question={this.state.question}
+								correctAnswer={this.state.correctAnswer}
+								onClick={this.handleClick}
+								onChangeInput={this.handleChangeInput}
+								inputField={this.state.inputField}/>
 						)
 					}
 
 					{this.state.isSubmitted
-						? <RenderPreview quizItems={this.state.quizItems} title={this.state.title} onDelete={this.handleDeleteQuestion} />
+						? <RenderPreview
+							quizItems={this.state.quizItems}
+							title={this.state.title}
+							onDelete={this.handleDeleteQuestion} />
 						: ""
 					}
 
