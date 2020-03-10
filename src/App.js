@@ -12,22 +12,25 @@ class App extends React.Component{
 
 	state = {
 		user: null,
-		loading: true,
+		showSpinner: true,
 	}
 
 	componentDidMount() {
+
 		this.onAuthStateChangedListener = auth.onAuthStateChanged(authUser => {
 			if(authUser){
 				this.setState({
 					user: {
 						email: authUser.email
 					},
-					loading: false,
+					showSpinner: false
+					// loading: true,
 				})
 			}else {
 				this.setState({
 					user: null,
-					loading: false,
+					showSpinner: false,
+					// loading: false,
 				})
 			}
 		})
@@ -41,9 +44,9 @@ class App extends React.Component{
         return (
 			<BrowserRouter>
 				{
-					this.state.loading
+					this.state.showSpinner
 					? (
-						<div>...Loading</div>
+						<div className="spinner">...Loading</div>
 					)
 					:
 					(

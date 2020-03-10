@@ -35,7 +35,7 @@ class Login extends React.Component{
     render(){
         return(
             <div id="login">
-                <h1 className="mb-5">Login</h1>
+                <h1 className="mb-5">Login to create quiz</h1>
 
                 <form id="login-form" onSubmit={this.handleSubmit}>
                     <div className="form-group">
@@ -61,7 +61,6 @@ class Login extends React.Component{
                     </div>
 
                 </form>
-				<h2>Ore try a quiz without login</h2>
 				<Link to="/show">Try a quiz</Link>
             </div>
         )
