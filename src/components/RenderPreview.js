@@ -20,7 +20,7 @@ class RenderPreview extends React.Component {
 			<form>
 				<h1>{this.props.title}</h1>
 				{quizItem}
-				<Link to="/" className="submit" >Save quiz</Link>
+				<Link to="/" className="btn btn-secondary submit" >Save quiz</Link>
 			</form>
 		)
     }

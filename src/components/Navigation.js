@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, NavLink, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { auth } from '../modules/firebase'
 
 const Navigation = props => {
@@ -16,7 +16,7 @@ const Navigation = props => {
 
     return(
         <nav id="navigation" className="navbar navbar-expand-md">
-			<p className="navbar-brand">Awesome Quiz app</p>
+			<img src={require("../images/quiz.png")} />
 			<ul className="navbar-nav ml-auto">
 				{
 					auth.currentUser
