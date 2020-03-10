@@ -19,7 +19,7 @@ const TitleForm = props => {
 						className="btn btn-secondary"
 						type="submit"
 						id="button-addon2"
-					>Add title
+					>Add
 					</button>
 				</div>
 			</div>

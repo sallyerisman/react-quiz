@@ -171,7 +171,7 @@ class QuizForm extends React.Component{
 				? (<div className="spinner"></div>)
 				: "" }
 
-				<Link to="/">Back to main page</Link>
+				<Link to="/" className="mainPage" >Back to main page</Link>
 				<div className="container">
 					{!this.state.isTitleSubmitted
 						? (
