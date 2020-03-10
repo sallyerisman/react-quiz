@@ -175,15 +175,29 @@ class QuizForm extends React.Component{
 				<div className="container">
 					{!this.state.isTitleSubmitted
 						? (
-							<TitleForm onSubmit={this.handleQuizTitleSubmit} onChange={this.handleChange} value={this.state.title}/>
+							<TitleForm
+								onSubmit={this.handleQuizTitleSubmit}
+								onChange={this.handleChange}
+								value={this.state.title}/>
 						)
 						: (
-							<QuestionForm onSubmit={this.handleSubmit} onChange={this.handleChange} title={this.state.title} question={this.state.question} correctAnswer={this.state.correctAnswer} onClick={this.handleClick} onChangeInput={this.handleChangeInput} inputField={this.state.inputField}/>
+							<QuestionForm
+								onSubmit={this.handleSubmit}
+								onChange={this.handleChange}
+								title={this.state.title}
+								question={this.state.question}
+								correctAnswer={this.state.correctAnswer}
+								onClick={this.handleClick}
+								onChangeInput={this.handleChangeInput}
+								inputField={this.state.inputField}/>
 						)
 					}
 
 					{this.state.isSubmitted
-						? <RenderPreview quizItems={this.state.quizItems} title={this.state.title} onDelete={this.handleDeleteQuestion} />
+						? <RenderPreview
+							quizItems={this.state.quizItems}
+							title={this.state.title}
+							onDelete={this.handleDeleteQuestion} />
 						: ""
 					}
 
