@@ -82,8 +82,8 @@ class ShowQuizzes extends React.Component{
 					? (this.state.errorMsg)
 					: (
 						<div className="container">
+							<Link className="mainPage" to="/">Back to main page</Link>
 							<h1>All quizzes</h1>
-							<Link to="/">Back to main page</Link>
 							{showTitle}
 						</div>
 					)
