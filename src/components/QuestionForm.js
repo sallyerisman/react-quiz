@@ -21,7 +21,7 @@ const QuestionForm = props => {
 					type="text"
 					className="form-control"
 					required
-					placeholder="Provide the correct answer"
+					placeholder="Provide correct answer"
 					onChange={onChange}
 					value={correctAnswer}
 				/>
@@ -31,7 +31,7 @@ const QuestionForm = props => {
 						type="button"
 						id="button-addon2"
 						onClick={onClick}
-					>Add more answer options
+					>Add
 					</button>
 				</div>
 			</div>
@@ -56,13 +56,14 @@ const QuestionForm = props => {
 										type="button"
 										id="button-addon2"
 										onClick={onClick}
-									>Add more answers
+									>Add
 									</button>
 								</div>
 							</div>
 						)
 					})
 				)
+
 				: ""
 			}
 
