@@ -123,6 +123,27 @@ h1 {
 	-ms-transform: translateZ(0);
 	transform: translateZ(0);
   }
+
+.correct {
+	background-color: #008000;
+}
+
+.result {
+	margin-bottom: 5rem;
+	font-size: 3rem;
+}
+
+.list-group-item {
+	color: black;
+	font-size: 1.5rem;
+}
+
+.answerOption {
+	background-color: chocolate;
+}
+
+
+
   @-webkit-keyframes load5 {
 	0%,
 	100% {
