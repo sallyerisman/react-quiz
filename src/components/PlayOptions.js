@@ -1,12 +1,12 @@
 import React from "react"
 
 class PlayOptions extends React.Component {
-	
+
 	render() {
 		const options = this.props.options.map((option, j) => {
 			return (
-				<li className="list-group-item">
-					<label key={j}>
+				<li key={j} className="list-group-item">
+					<label>
 						<input
 							className="mr-2"
 							type="checkbox"
@@ -20,10 +20,10 @@ class PlayOptions extends React.Component {
 		})
 
 		return (
-				
+
 			<ul className="list-group">
 				{options}
-			</ul>			
+			</ul>
 		)
 	}
 }
