@@ -77,6 +77,15 @@ label{
 	margin-bottom: 2rem;
 }
 
+.gridContainer{
+	border: 1px solid grey;
+	border-radius: 0.5rem;
+	display: grid;
+	grid-template-columns: 75% 25%;
+	padding: 3rem;
+	margin-bottom: 2rem;
+}
+
 .navbar {
 	background-color: #9ED9CCFF;
 	width: 100vw;
@@ -112,14 +121,10 @@ label{
 	width: 100%;
 }
 
-.gridContainer{
-	display: grid;
-	grid-template-columns: 1fr, 1fr;
-}
-
 .trash-icon {
 	cursor: pointer;
-	font-size: 3rem;
+	font-size: 2rem;
+	padding-top: 1.5rem;
 }
 
 .eachQuestion {
