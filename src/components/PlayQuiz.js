@@ -78,12 +78,16 @@ class PlayQuiz extends React.Component{
 	}
 
 	handleChange = (e, qiIndex) => {
+		// answer.classList.add("answerOption")
+		e.target.classList.toggle("answerOption")
+
 		const answers = [...this.state.answers]
 		answers[qiIndex] = e.target.value;
 
 		this.setState({
 			answers: answers
-		})
+		})	
+
 	}
 
     render() {

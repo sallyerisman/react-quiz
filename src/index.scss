@@ -78,6 +78,10 @@ label{
 	color: white;
 }
 
+.btn.answerOption:hover{
+	background-color: green;
+}
+
 .login-btn{
 	font-size: 1.5rem;
 }
@@ -182,14 +186,10 @@ label{
 	font-size: 3rem;
 }
 
-.list-group-item {
-	color: black;
-	font-size: 1.5rem;
+.answerOption {
+	background-color: green;
 }
 
-.answerOption {
-	background-color: chocolate;
-}
 
 @media only screen and (min-width: 768px) {
 	.gridContainer h2{
