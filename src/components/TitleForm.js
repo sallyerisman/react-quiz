@@ -5,6 +5,7 @@ const TitleForm = props => {
 		<form onSubmit={props.onSubmit}>
 			<div className="input-group mb-3">
 				<input
+					required
 					id="title"
 					type="text"
 					className="form-control"
