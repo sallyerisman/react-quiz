@@ -69,8 +69,8 @@ class PlayQuiz extends React.Component{
 		this.state.answers.forEach((answer, i) => {
 			if (answer === correctAnswer[i]) {
 				points++;
-			}
-		});
+			} 
+		});        
 
 		this.setState({
 			points,
@@ -90,7 +90,7 @@ class PlayQuiz extends React.Component{
         const quizItem = this.state.quizItems.map((item, qiIndex) => {
 			return (
 				<div key={qiIndex} className="eachQuestion container">
-					<h2>{item.question}</h2>
+					<h2 className="answer">{item.question}</h2>
 					<PlayOptions options={item.options} radioId={this.state.quizItems}  onSelection={e => { this.handleChange(e, qiIndex) }}/>
 				</div>
 			)
@@ -113,7 +113,7 @@ class PlayQuiz extends React.Component{
 							<button className="btn">Submit</button>
 							</form>
 
-							<h3>Your score is: {this.state.points}/{this.state.answers.length}</h3>
+							<h3 className="result">Your score is: {this.state.points}/{this.state.answers.length}</h3>
 						</div>
 					)
 				}
