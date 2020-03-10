@@ -22,20 +22,10 @@ class PlayQuiz extends React.Component{
         this.getQuiz();
 	}
 
-	showSpinner = () => {
+    getQuiz = () => {
 		this.setState({
 			showSpinner: true,
 		})
-	}
-
-	hideSpinner = () => {
-		this.setState({
-			showSpinner: false,
-		})
-	}
-
-    getQuiz = () => {
-		this.showSpinner();
 
         db.collection('quizzes').doc(this.state.quizId).get()
         .then((snapshot) => {
@@ -57,12 +47,11 @@ class PlayQuiz extends React.Component{
             this.setState({
 				quizItems: quiz,
 				answers: answers,
-                title: snapshot.data().title
+				title: snapshot.data().title,
+				showSpinner: false,
 			});
-
-			this.hideSpinner();
         })
-        .catch((err) => {
+        .catch(() => {
             this.setState({
 				errorMsg: <p>Sorry, something went wrong. Please try again.</p>,
 			})
@@ -110,7 +99,7 @@ class PlayQuiz extends React.Component{
         return (
 			<div>
 				{this.state.showSpinner
-					? (<div className="spinner">Loading...</div>)
+					? <div className="spinner"></div>
 					: "" }
 
 				{this.state.errorMsg
@@ -125,8 +114,9 @@ class PlayQuiz extends React.Component{
 							</form>
 
 							<h3>Your score is: {this.state.points}/{this.state.answers.length}</h3>
-						</div>) }
-
+						</div>
+					)
+				}
 			</div>
         )
     }

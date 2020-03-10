@@ -5,12 +5,29 @@ import { Link } from 'react-router-dom';
 
 class ShowQuizzes extends React.Component{
     state = {
-        quizTitles: [],
+		quizTitles: [],
+		showSpinner: false,
+		errorMsg: false,
     }
     componentDidMount() {
         this.getQuizTitles();
-    }
+	}
+
+	showSpinner = () => {
+		this.setState({
+			showSpinner: true,
+		})
+	}
+
+	hideSpinner = () => {
+		this.setState({
+			showSpinner: false,
+		})
+	}
+
     getQuizTitles = () => {
+		this.showSpinner();
+
         db.collection('quizzes').get().then((snapshot) => {
             const quizTitles = [];
             snapshot.forEach((doc) => {
@@ -22,15 +39,27 @@ class ShowQuizzes extends React.Component{
             });
             this.setState({
                 quizTitles: quizTitles,
-            })
-        })
+			});
+
+			this.hideSpinner();
+
+        }).catch(() => {
+			this.setState({
+				errorMsg: true,
+			})
+		})
 	}
 
 	handleDelete = (id) => {
+		this.showSpinner();
+
 		db.collection("quizzes").doc(id).delete().then(() => {
 			this.getQuizTitles();
-		}).catch(err => {
-			console.error(err)
+			this.hideSpinner();
+		}).catch(() => {
+			this.setState({
+				errorMsg: true,
+			})
 		})
     }
 
@@ -43,12 +72,23 @@ class ShowQuizzes extends React.Component{
                 </div>
             )
         })
-        return(
-            <div className="container">
-                <h1>All quizzes</h1>
-				<Link to="/">Back to main page</Link>
-                {showTitle}
-            </div>
+        return (
+			<div>
+				{this.state.showSpinner
+					? (<div className="spinner"></div>)
+					: "" }
+
+				{this.state.errorMsg
+					? (this.state.errorMsg)
+					: (
+						<div className="container">
+							<h1>All quizzes</h1>
+							<Link to="/">Back to main page</Link>
+							{showTitle}
+						</div>
+					)
+				}
+			</div>
         )
     }
 }

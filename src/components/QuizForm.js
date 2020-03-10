@@ -2,6 +2,7 @@ import React from 'react'
 import RenderPreview from './RenderPreview';
 import { db } from "../modules/firebase"
 import { Link } from 'react-router-dom';
+import TitleForm from "./TitleForm"
 
 class QuizForm extends React.Component{
 
@@ -123,13 +124,13 @@ class QuizForm extends React.Component{
 					correctAnswer: "",
 					options: [],
 				})
-			}).catch(err => {
+			}).catch(() => {
 				this.setState({
 					errorMsg: true,
 				})
 			})
 
-		}).catch(err => {
+		}).catch(() => {
 			this.setState({
 				errorMsg: true,
 			})
@@ -148,7 +149,7 @@ class QuizForm extends React.Component{
 		}).then(() => {
 			this.hideSpinner();
 			this.getQuizItems();
-		}).catch(err => {
+		}).catch(() => {
 			this.setState({
 				errorMsg: true,
 			})
@@ -169,47 +170,27 @@ class QuizForm extends React.Component{
 		return(
 			<div>
 				{this.state.showSpinner
-				? (<div className="spinner">Loading...</div>)
+				? (<div className="spinner"></div>)
 				: "" }
 
 				<Link to="/">Back to main page</Link>
 				<div className="container">
-					{ !this.state.isTitleSubmitted
+					{!this.state.isTitleSubmitted
 						? (
-							<form onSubmit={this.handleQuizTitleSubmit}>
-							<div className="input-group mb-3">
-								<input
-									id="title"
-									type="text"
-									className="form-control"
-									placeholder="Give your quiz a name"
-									onChange={this.handleChange}
-									value={this.state.title}
-								/>
-
-								<div className="input-group-append">
-									<button
-										className="btn btn-secondary"
-										type="submit"
-										id="button-addon2"
-									>Add title
-									</button>
-								</div>
-							</div>
-						</form>
+							<TitleForm onSubmit={this.handleQuizTitleSubmit} onChange={this.handleChange} value={this.state.title}/>
 						)
 						: (
 							<form onSubmit={this.handleSubmit}>
-							<h1>{this.state.title}</h1>
-							<input
-								id="question"
-								type="text"
-								className="form-control"
-								required
-								placeholder="Write quiz question"
-								onChange={this.handleChange}
-								value={this.state.question}
-							/>
+								<h1>{this.state.title}</h1>
+								<input
+									id="question"
+									type="text"
+									className="form-control"
+									required
+									placeholder="Write quiz question"
+									onChange={this.handleChange}
+									value={this.state.question}
+								/>
 							<div className="input-group mt-3 mb-3">
 								<input
 									id="correctAnswer"
@@ -270,14 +251,14 @@ class QuizForm extends React.Component{
 						)
 					}
 
-					{	this.state.isSubmitted
-							? <RenderPreview quizItems={this.state.quizItems} title={this.state.title} onDelete={this.handleDeleteQuestion} />
-							: ""
+					{this.state.isSubmitted
+						? <RenderPreview quizItems={this.state.quizItems} title={this.state.title} onDelete={this.handleDeleteQuestion} />
+						: ""
 					}
 
-					{	this.state.errorMsg
-							? {error}
-							: ""
+					{this.state.errorMsg
+						? {error}
+						: ""
 					}
 				</div>
 			</div>
