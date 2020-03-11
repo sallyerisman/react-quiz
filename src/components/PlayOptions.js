@@ -1,31 +1,30 @@
 import React from "react"
 
-class PlayOptions extends React.Component {
+const PlayOptions = (props) => {
 
-	render() {
-		const options = this.props.options.map((option, j) => {
-			return (
-				<div className="row">
-					<label key={j}>
-						<input
-							className="btn btn-lg eachOption"
-							type="button"
-							name={this.props.radioId.id}
-							value={option}
-							onClick={this.props.onSelection}
-						/> {}
-					</label>				
-				</div>
-			)
-		})
+	const { options, radioId, onSelection } = props;
 
+	const allOptions = options.map((option, j) => {
 		return (
-				
-			<div className="container">
-					{options}
+			<div className="row">
+				<label key={j}>
+					<input
+						className="btn btn-lg eachOption"
+						type="button"
+						name={radioId.id}
+						value={option}
+						onClick={onSelection}
+					/> {}
+				</label>
 			</div>
 		)
-	}
+	})
+
+	return (
+		<div className="container">
+			{allOptions}
+		</div>
+	)
 }
 
 export default PlayOptions
