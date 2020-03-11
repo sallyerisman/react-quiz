@@ -19,20 +19,15 @@ const Navigation = props => {
 			<Link className="logo" to="/">
 				<img src={require("../images/quiz.png")} alt="logo" />
 			</Link>
-
-			<ul className="navbar-nav ml-auto">
-				{
-					auth.currentUser
-					? (
-						<li className="nav-item">
-							<span className="nav-link" onClick={handleSignOut}>Logout</span>
-						</li>
-					)
-					:(
-						''
-					)
-				}
-			</ul>
+			{
+				auth.currentUser
+				? (
+					<span className="loginLogout nav-link" onClick={handleSignOut}>Logout</span>
+				)
+				:(
+					''
+				)
+			}
 		</nav>
     )
 }

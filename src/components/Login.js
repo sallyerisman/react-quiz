@@ -57,12 +57,12 @@ class Login extends React.Component{
                     </div>
 
                     <div className="d-flex justify-content-end">
-                        <button type="submit" className="btn btn-success">Log in</button>
+                        <button type="submit" className="btn loginLogout">Log in</button>
                     </div>
 
                 </form>
 
-				<Link to="/show" className="login-btn btn btn-success" >Try a quiz</Link>
+				<Link to="/show" className="btn loginLogout" >Try a quiz</Link>
             </div>
         )
     }
