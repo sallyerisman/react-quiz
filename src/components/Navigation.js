@@ -14,7 +14,7 @@ const Navigation = props => {
     }
 
     return(
-        <nav id="navigation" className="navbar navbar-expand-md">
+        <nav id="navigation" className="navbar">
 			<Link className="logo" to="/">
 				<img src={require("../images/quiz.png")} alt="logo" />
 			</Link>
