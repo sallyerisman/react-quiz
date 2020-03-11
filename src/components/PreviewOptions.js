@@ -3,21 +3,22 @@ import React from "react"
 const PreviewOptions = props => {
 	const options = props.options.map((option, j) => {
 		return (
-			<li className="list-group-item">
-				<label key={j}>
+			<div key={j} className="row">
+				<label>
 					<input
-						type="checkbox"
-						name="option"
-					/>{option}
+						className="btn btn-lg eachOption"
+						type="button"
+						value={option}
+					/>
 				</label>
-			</li>
+			</div>
 		)
 	})
 
 	return (
-		<ul className="list-group">
+		<div className="container">
 			{options}
-		</ul>
+		</div>
 	)
 }
 
