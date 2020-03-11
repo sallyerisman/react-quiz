@@ -1,7 +1,7 @@
 import React from "react"
 
 class PlayOptions extends React.Component {
-	
+
 	render() {
 		const options = this.props.options.map((option, j) => {
 			return (

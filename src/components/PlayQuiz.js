@@ -16,6 +16,7 @@ class PlayQuiz extends React.Component{
 		answers: [],
 		showSpinner: false,
 		errorMsg: false,
+		rightAnswers: [],
 	}
 
     componentDidMount() {
@@ -69,8 +70,8 @@ class PlayQuiz extends React.Component{
 		this.state.answers.forEach((answer, i) => {
 			if (answer === correctAnswer[i]) {
 				points++;
-			} 
-		});        
+			}
+		});
 
 		this.setState({
 			points,
@@ -112,14 +113,14 @@ class PlayQuiz extends React.Component{
 					: "" }
 
 				{this.state.errorMsg
-					? (this.state.errorMsg)
+					? this.state.errorMsg
 					: (
 						<div>
-							<Link to="/show">Back to quiz page</Link>
+							<Link className="mainPage" to="/show">Back to quiz page</Link>
 							<form onSubmit={this.handleSubmit}>
-							<h1>{this.state.title}</h1>
-							{quizItem}
-							<button className="btn">Submit</button>
+								<h1>{this.state.title}</h1>
+								{quizItem}
+								<button className="btn">Submit</button>
 							</form>
 
 							<h3 className="result">Your score is: {this.state.points}/{this.state.answers.length}</h3>

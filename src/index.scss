@@ -10,9 +10,9 @@
 a {
   align-items: center;
   border-radius: 0.5rem;
-  color: #FFDDE2FF;
+  color: #FAA094FF;
   display: flex;
-  font-size: 2rem;
+  font-size: 1.5rem;
   height: 100%;
   justify-content: center;
   text-decoration: none;
@@ -20,7 +20,6 @@ a {
 }
 
 a:hover {
-  background-color: rgb(228, 145, 135);
   color: white;
   text-decoration: none !important;
 }
@@ -59,6 +58,7 @@ img{
 	width: 7rem;
 }
 
+<<<<<<< HEAD
 input{
 	margin-right: 1rem;
 }
@@ -70,6 +70,15 @@ input{
 // 	margin: 0 1rem;
 // 	margin-top: 0.5rem;
 // }
+=======
+label{
+	display: flex;
+	font-size: 1.5rem;
+	font-family: 'Roboto', sans-serif;
+	margin: 0 1rem;
+	margin-top: 0.5rem;
+}
+>>>>>>> master
 
 .btn {
 	background-color: #FAA094FF;
@@ -77,8 +86,13 @@ input{
 }
 
 .btn:hover {
+<<<<<<< HEAD
 	background-color: rgb(156, 156, 156);
 	color: white;
+=======
+	background-color: rgb(228, 145, 135);
+	color: #FFDDE2FF;
+>>>>>>> master
 }
 
 .login-btn{
@@ -94,6 +108,15 @@ input{
   padding: 0;
 }
 
+.card a {
+	color: #FFDDE2FF;
+}
+
+.card a:hover {
+	color: #FFDDE2FF;
+	background-color: rgb(228, 144, 133);
+}
+
 .container{
 	margin-bottom: 2rem;
 }
@@ -102,6 +125,7 @@ input{
 	background-color: rgb(134, 206, 189);
 	border-radius: 0.5rem;
 	display: grid;
+	gap: 20px;
 	grid-template-columns: 75% 25%;
 	padding: 3rem;
 	margin-bottom: 2rem;
@@ -109,10 +133,24 @@ input{
 
 .gridContainer h2{
 	font-size: 1.5rem;
+	margin-bottom: 1.5rem;
+}
+
+.gridContainer input{
+	margin-right: 1rem;
+}
+
+.logo{
+	justify-content: flex-start;
+}
+
+.mainPage{
+	color: #FAA094FF;
 }
 
 .mainPage:hover{
 	background-color: #008C76FF;
+	color: #FFDDE2FF;
 }
 
 .navbar {
@@ -130,8 +168,7 @@ input{
 }
 
 .nav-link:hover {
-	background-color: rgb(228, 145, 135);
-	color: white;
+	color: #FFDDE2FF;
 	text-decoration: none;
 	cursor: pointer;
 }
@@ -250,6 +287,7 @@ input{
 		font-size: 1.8rem;
 	}
 }
+
 
   @-webkit-keyframes load5 {
 	0%,

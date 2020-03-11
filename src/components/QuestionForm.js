@@ -1,7 +1,6 @@
 import React from "react"
 
 const QuestionForm = props => {
-
 	const { onSubmit, title, onChange, question, correctAnswer, onClick, inputField, onChangeInput } = props;
 
 	return (
@@ -36,46 +35,46 @@ const QuestionForm = props => {
 					</button>
 				</div>
 			</div>
-		{	inputField
-			?
-			inputField.map((item, index) => {
-				const i = index;
-				return (
-					<div key={index} className="input-group mt-3 mb-3">
-						<input
-							id="option"
-							type="text"
-							className="form-control"
-							placeholder="Add more answers"
-							onChange={(e) => {onChangeInput(i, e)}}
-							value={item}
-						/>
+			{inputField
+				? (
+					inputField.map((item, index) => {
+						const i = index;
+						return (
+							<div key={index} className="input-group mt-3 mb-3">
+								<input
+									id="option"
+									type="text"
+									className="form-control"
+									placeholder="Add more answers"
+									onChange={(e) => {onChangeInput(i, e)}}
+									value={item}
+								/>
 
-						<div className="input-group-append">
-							<button
-								className="btn btn-secondary"
-								type="button"
-								id="button-addon2"
-								onClick={onClick}
-							>Add
-							</button>
-						</div>
-					</div>
+								<div className="input-group-append">
+									<button
+										className="btn btn-secondary"
+										type="button"
+										id="button-addon2"
+										onClick={onClick}
+									>Add
+									</button>
+								</div>
+							</div>
+						)
+					})
 				)
-			})
-			: ""
-		}
 
-		<button
-			className="btn btn-secondary submit"
-			type="submit"
-			id="submit-btn"
-		>Add another question
-		</button>
-	</form>
+				: ""
+			}
 
+			<button
+				className="btn btn-secondary submit"
+				type="submit"
+				id="submit-btn"
+			>Add another question
+			</button>
+		</form>
 	)
 }
-
 
 export default QuestionForm
