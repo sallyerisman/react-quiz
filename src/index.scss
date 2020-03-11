@@ -26,7 +26,7 @@ a:hover {
 }
 
 body {
-  background-color: #008C76FF;
+  background-color: rgb(243, 173, 21);
   color: #FFDDE2FF;
   font-family: 'Roboto', sans-serif;
   text-align: center;
@@ -34,9 +34,9 @@ body {
 
 form,
 .quiz-list{
-	margin: 3rem 0;
+	margin: 1rem 0;
 	border-radius: 0.5rem;
-	background-color: #9ED9CCFF;
+	background-color: rgb(243, 173, 21);
 	padding: 2rem;
 }
 
@@ -45,9 +45,12 @@ h1, h2, h3, h4, h5, h6{
 }
 
 h1 {
-	color: #FAA094FF;
+	color: white;
 	font-size: 3.5rem;
-	margin: 1.5rem;
+	margin-bottom: 4rem;
+	font-weight: bold;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+
 }
 
 img{
@@ -60,13 +63,13 @@ input{
 	margin-right: 1rem;
 }
 
-label{
-	display: flex;
-	font-size: 1.5rem;
-	font-family: 'Roboto', sans-serif;
-	margin: 0 1rem;
-	margin-top: 0.5rem;
-}
+// label{
+// 	display: flex;
+// 	font-size: 1.5rem;
+// 	font-family: 'Roboto', sans-serif;
+// 	margin: 0 1rem;
+// 	margin-top: 0.5rem;
+// }
 
 .btn {
 	background-color: #FAA094FF;
@@ -74,12 +77,8 @@ label{
 }
 
 .btn:hover {
-	background-color: rgb(228, 145, 135);
+	background-color: rgb(156, 156, 156);
 	color: white;
-}
-
-.btn.answerOption:hover{
-	background-color: green;
 }
 
 .login-btn{
@@ -162,6 +161,48 @@ label{
 	margin-bottom: 3rem;
 }
 
+.questionBackgroundTwo {
+	background-color: rgb(0, 197, 168);	
+	display: flex;
+	padding: 0.5rem 0.5rem;
+	border-radius: 0.5rem;
+	margin-bottom: 2rem;
+	height: 14.5rem;
+	border: 0.5px solid  rgb(1, 139, 118);
+	box-shadow: 1px 3px 2px grey;
+}
+
+.questionBackground {
+	margin: auto;
+	width: 95%;
+	background-color: white;
+	height: 13rem;
+	border-radius: 0.5rem;
+	margin-bottom: 0.8rem;
+	border: 3px solid  rgba(1, 139, 119, 0.753);
+	// box-shadow: 1px 1px 2px grey;
+}
+
+.questionNumb {
+	font-weight: bold;
+	font-size: 1.5rem;
+	color: white;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.question {
+	font-size: 1rem;
+	color: white;
+	font-weight: bold;
+	width: 100%;
+	margin-top: 5.5rem;
+	margin-bottom: 0px !important;
+	border-radius: 0.5rem;
+	padding-right: 0.5rem;
+	padding-left: 0.5rem;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
 .spinner {
 	margin: 100px auto;
 	font-size: 25px;
@@ -177,19 +218,32 @@ label{
 	transform: translateZ(0);
   }
 
-.correct {
-	background-color: #008000;
-}
-
 .result {
 	margin-bottom: 5rem;
 	font-size: 3rem;
 }
 
-.answerOption {
-	background-color: green;
+.btn.answerOption {
+	background-color:rgb(0, 197, 168);
+	color: white;
+	box-shadow: 0px;
 }
 
+.btn.answerOption:hover{
+	background-color: rgb(0, 119, 101);
+}
+
+.eachOption {
+	background-color: rgb(243, 243, 243);
+	width: 20rem;
+	height: 3rem;
+	border-radius: 0.75rem;
+	box-shadow: 1px 3px 2px grey;
+	margin-bottom: 0.25rem;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 1rem;
+}
 
 @media only screen and (min-width: 768px) {
 	.gridContainer h2{

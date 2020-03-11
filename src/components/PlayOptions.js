@@ -5,10 +5,10 @@ class PlayOptions extends React.Component {
 	render() {
 		const options = this.props.options.map((option, j) => {
 			return (
-				<div>
+				<div className="row">
 					<label key={j}>
 						<input
-							className="mr-2 answer btn btn-lg"
+							className="btn btn-lg eachOption"
 							type="button"
 							name={this.props.radioId.id}
 							value={option}
@@ -21,9 +21,9 @@ class PlayOptions extends React.Component {
 
 		return (
 				
-			<div className="list-group">
-				{options}
-			</div>			
+			<div className="container">
+					{options}
+			</div>
 		)
 	}
 }

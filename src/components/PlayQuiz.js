@@ -94,7 +94,12 @@ class PlayQuiz extends React.Component{
         const quizItem = this.state.quizItems.map((item, qiIndex) => {
 			return (
 				<div key={qiIndex} className="eachQuestion container">
-					<h2 className="answer">{item.question}</h2>
+					<h2 className="questionNumb">Question {qiIndex + 1} of {this.state.answers.length}</h2>
+					<div className="questionBackgroundTwo">
+						<div className="questionBackground">
+							<h2 className="question">{item.question}</h2>
+						</div>
+					</div>
 					<PlayOptions options={item.options} radioId={this.state.quizItems}  onSelection={e => { this.handleChange(e, qiIndex) }}/>
 				</div>
 			)
