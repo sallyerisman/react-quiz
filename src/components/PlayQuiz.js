@@ -8,7 +8,8 @@ class PlayQuiz extends React.Component{
     constructor(props) {
         super(props);
         this.state.quizId = this.props.match.params.id;
-    }
+	}
+
     state = {
         quizItems: [],
         title: "",
@@ -16,7 +17,6 @@ class PlayQuiz extends React.Component{
 		answers: [],
 		showSpinner: false,
 		errorMsg: false,
-		rightAnswers: [],
 	}
 
     componentDidMount() {
@@ -64,7 +64,7 @@ class PlayQuiz extends React.Component{
 
 		const correctAnswer = this.state.quizItems.map(item => {
 			return item.correctAnswer
-		})
+		});
 
 		let points = 0;
 		this.state.answers.forEach((answer, i) => {
@@ -75,19 +75,18 @@ class PlayQuiz extends React.Component{
 
 		this.setState({
 			points,
-		})
+		});
 	}
 
 	handleChange = (e, qiIndex) => {
-		// answer.classList.add("answerOption")
 		e.target.classList.toggle("answerOption")
 
-		const answers = [...this.state.answers]
+		const answers = [...this.state.answers];
 		answers[qiIndex] = e.target.value;
 
 		this.setState({
 			answers: answers
-		})	
+		});
 
 	}
 
@@ -110,10 +109,11 @@ class PlayQuiz extends React.Component{
 			<div>
 				{this.state.showSpinner
 					? <div className="spinner"></div>
-					: "" }
+					: ""
+				}
 
 				{this.state.errorMsg
-					? this.state.errorMsg
+					? <p className="error">{this.state.errorMsg}</p>
 					: (
 						<div>
 							<Link className="mainPage" to="/show"><i className="arrow left"></i>Back to quiz page</Link>
@@ -131,4 +131,5 @@ class PlayQuiz extends React.Component{
         )
     }
 }
+
 export default PlayQuiz

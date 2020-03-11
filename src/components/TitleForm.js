@@ -1,8 +1,11 @@
 import React from "react"
 
 const TitleForm = props => {
+
+	const { onSubmit, onChange, title } = props;
+
 	return (
-		<form onSubmit={props.onSubmit}>
+		<form onSubmit={onSubmit}>
 			<div className="input-group mb-3">
 				<input
 					required
@@ -10,8 +13,8 @@ const TitleForm = props => {
 					type="text"
 					className="form-control"
 					placeholder="Give your quiz a name"
-					onChange={props.onChange}
-					value={props.title}
+					onChange={onChange}
+					value={title}
 				/>
 
 				<div className="input-group-append">

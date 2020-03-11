@@ -40,7 +40,7 @@ class QuizForm extends React.Component{
 	}
 
 	handleQuizTitleSubmit = (e) => {
-		e.preventDefault()
+		e.preventDefault();
 
 		this.setState({
 			isTitleSubmitted: true,
@@ -49,20 +49,20 @@ class QuizForm extends React.Component{
 		const newQuiz = {
 			title: this.state.title,
 			quizItems: [],
-		}
+		};
 
 		db.collection("quizzes").add( newQuiz ).then(docRef => {
 			this.setState({
 				docId: docRef.id,
 			});
-		}).catch(err => {
+		}).catch(() => {
 			this.setState({
 				errorMsg: true,
 			})
 		})
 	}
 
-	handleClick = (e, index) => {
+	handleClick = (index) => {
 		this.setState({
 			inputField: [...this.state.inputField, this.state.inputField[index]],
 		})
@@ -88,7 +88,7 @@ class QuizForm extends React.Component{
 
 			this.hideSpinner();
 
-		}).catch(err => {
+		}).catch(() => {
 			this.setState({
 				errorMsg: true,
 			})
@@ -153,14 +153,27 @@ class QuizForm extends React.Component{
 				errorMsg: true,
 			})
 		})
+	}
+
+	handleDeleteQuiz = (id) => {
+		this.showSpinner();
+
+		db.collection("quizzes").doc(id).delete().then(() => {
+			this.getQuizTitles();
+			this.hideSpinner();
+		}).catch(() => {
+			this.setState({
+				errorMsg: true,
+			})
+		})
     }
 
 	handleSubmit = (e) => {
 		e.preventDefault();
 
-		let question = this.state.question
+		let question = this.state.question;
 
-		if(question.charAt(question.length -1) !== '?'){
+		if (question.charAt(question.length -1) !== '?') {
 			question += '?'
 			this.setState({
 				question: question
@@ -172,14 +185,14 @@ class QuizForm extends React.Component{
 
 	render() {
 		const error = this.state.errorMessage
-		? (<p className="error-msg">Sorry, something went wrong. Please try again.</p>)
+		? <p className="error">Sorry, something went wrong. Please try again.</p>
 		: ""
 
 		return(
 			<div>
 				{this.state.showSpinner
-				? (<div className="spinner"></div>)
-				: "" }
+					? <div className="spinner"></div>
+					: "" }
 
 				<Link to="/" className="mainPage" >Back to main page</Link>
 				<div className="container">
@@ -204,10 +217,14 @@ class QuizForm extends React.Component{
 					}
 
 					{this.state.isSubmitted
-						? <RenderPreview
+						? (
+							<RenderPreview
 							quizItems={this.state.quizItems}
 							title={this.state.title}
-							onDelete={this.handleDeleteQuestion} />
+							docId={this.state.docId}
+							onDelete={this.handleDeleteQuestion}
+							onDeleteQuiz={this.handleDeleteQuiz} />
+						)
 						: ""
 					}
 

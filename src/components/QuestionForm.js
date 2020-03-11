@@ -63,7 +63,6 @@ const QuestionForm = props => {
 						)
 					})
 				)
-
 				: ""
 			}
 

@@ -5,37 +5,37 @@ import { Link } from 'react-router-dom';
 class Login extends React.Component{
 
     state = {
-        email: '',
-        password: '',
+        email: "",
+		password: "",
+		errorMsg: "",
     }
 
     handleChange = (e) => {
         this.setState({
-        [e.target.id]: e.target.value
+        	[e.target.id]: e.target.value
         })
     }
 
     handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
-        const { email, password } = this.state
+        const { email, password } = this.state;
 
         auth.signInWithEmailAndPassword(email, password)
-        .then(credentials => {
-            console.log('Authentication successful!', credentials);
-
+        .then(() => {
             this.props.history.push('/')
         })
-        .catch(err => {
-			alert('Authentication failed! Try again.')
+        .catch(() => {
+			this.setState({
+				errorMsg: "Authentication failed. Please try again or play a quiz without logging in."
+			})
         })
-
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div id="login" className="container">
-                <h1>Login to create quiz</h1>
+                <h1>Log in to create quiz</h1>
 
                 <form id="login-form" onSubmit={this.handleSubmit}>
                     <div className="form-group">
@@ -59,10 +59,14 @@ class Login extends React.Component{
                     <div className="d-flex justify-content-end">
                         <button type="submit" className="btn btn-success">Log in</button>
                     </div>
-
                 </form>
 
-				<Link to="/show" className="login-btn btn btn-success" >Try a quiz</Link>
+				{this.state.errorMsg
+					? <p className="error">{this.state.errorMsg}</p>
+					: ""
+				}
+
+				<Link to="/show" className="login-btn btn btn-success" >Play a quiz</Link>
             </div>
         )
     }

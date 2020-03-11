@@ -1,5 +1,4 @@
 import firebase from "firebase/app"
-import 'firebase/auth';
 import "firebase/firestore"
 import "firebase/auth"
 
@@ -15,7 +14,6 @@ const config = {
 
 firebase.initializeApp(config);
 
-// Create shortcut:
 const db = firebase.firestore();
 const auth = firebase.auth();
 

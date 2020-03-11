@@ -3,12 +3,14 @@ import { db } from "../modules/firebase"
 import { Link } from 'react-router-dom';
 
 
-class ShowQuizzes extends React.Component{
+class ShowQuizzes extends React.Component {
+
     state = {
 		quizTitles: [],
 		showSpinner: false,
 		errorMsg: false,
-    }
+	}
+
     componentDidMount() {
         this.getQuizTitles();
 	}
@@ -28,58 +30,47 @@ class ShowQuizzes extends React.Component{
     getQuizTitles = () => {
 		this.showSpinner();
 
-        db.collection('quizzes').get().then((snapshot) => {
-            const quizTitles = [];
-            snapshot.forEach((doc) => {
-                const eachTitle = {
-                    title: doc.data().title,
-                    id: doc.id
-                }
-                quizTitles.push(eachTitle)
-            });
-            this.setState({
-                quizTitles: quizTitles,
-			});
+		db.collection('quizzes').get()
+			.then((snapshot) => {
+				const quizTitles = [];
+				snapshot.forEach((doc) => {
+					const eachTitle = {
+						title: doc.data().title,
+						id: doc.id
+					}
+					quizTitles.push(eachTitle)
+				});
+				this.setState({
+					quizTitles: quizTitles,
+				});
 
-			this.hideSpinner();
+				this.hideSpinner();
 
-        }).catch(() => {
-			this.setState({
-				errorMsg: true,
+			}).catch(() => {
+				this.setState({
+					errorMsg: true,
+				})
 			})
-		})
 	}
-
-	handleDelete = (id) => {
-		this.showSpinner();
-
-		db.collection("quizzes").doc(id).delete().then(() => {
-			this.getQuizTitles();
-			this.hideSpinner();
-		}).catch(() => {
-			this.setState({
-				errorMsg: true,
-			})
-		})
-    }
 
     render() {
         const showTitle = this.state.quizTitles.map((title, i) => {
             return (
                 <div key={i} className="quiz-list">
-                <Link to={"/play/" + title.id}>{title.title}</Link>
-				<span className="trash-icon" role="img" aria-label="Trash can" onClick={() => {this.handleDelete(title.id)}}>🗑</span>
+                	<Link to={"/play/" + title.id}>{title.title}</Link>
                 </div>
             )
-        })
+		})
+
         return (
 			<div>
 				{this.state.showSpinner
-					? (<div className="spinner"></div>)
-					: "" }
+					? <div className="spinner"></div>
+					: ""
+				}
 
 				{this.state.errorMsg
-					? (this.state.errorMsg)
+					? <p className="error">{this.state.errorMsg}</p>
 					: (
 						<div className="container">
 							<Link className="mainPage" to="/"><i className="arrow left"></i>Back to main page</Link>
@@ -92,4 +83,5 @@ class ShowQuizzes extends React.Component{
         )
     }
 }
+
 export default ShowQuizzes

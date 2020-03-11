@@ -10,7 +10,7 @@ class LandingPage extends React.Component{
 		}
 	}
 
-    render(){
+    render() {
         return (
 			<div className="container">
 				<h1>Quiz</h1>
@@ -24,7 +24,6 @@ class LandingPage extends React.Component{
 				</main>
 			</div>
         );
-
     }
 }
 
