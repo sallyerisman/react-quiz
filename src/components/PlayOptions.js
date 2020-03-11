@@ -6,15 +6,15 @@ const PlayOptions = (props) => {
 
 	const allOptions = options.map((option, j) => {
 		return (
-			<div className="row">
-				<label key={j}>
+			<div key={j} className="row">
+				<label>
 					<input
 						className="btn btn-lg eachOption"
 						type="button"
 						name={radioId.id}
 						value={option}
 						onClick={onSelection}
-					/> {}
+					/>
 				</label>
 			</div>
 		)

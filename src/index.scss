@@ -95,10 +95,10 @@ label{
 	margin-top: 1rem;
 }
 
-// .btn:hover {
-// 	background-color: rgb(156, 156, 156);
-// 	color: white;
-// }
+.btn:hover {
+	background-color: rgb(156, 156, 156);
+	color: white;
+}
 
 #login-form .form-group{
 	text-align: start;
@@ -153,15 +153,6 @@ label{
 	background-color: rgb(206, 204, 204);
 }
 
-// .mainPage{
-// 	color: #FAA094FF;
-// }
-
-// .mainPage:hover{
-// 	background-color: #008C76FF;
-// 	color: #FFDDE2FF;
-// }
-
 .navbar {
 	flex-wrap: nowrap;
 	margin-bottom: 1rem;
@@ -171,6 +162,7 @@ label{
 	width: 100vw;
 }
 
+<<<<<<< HEAD
 // .nav-link {
 // 	font-size: 1.5rem;
 // 	align-items: center;
@@ -189,6 +181,13 @@ label{
 // 	font-size: 1.5rem;
 // 	margin: 0;
 // }
+=======
+.navbar-brand {
+	color: #FAA094FF;
+	font-size: 1.5rem;
+	margin: 0;
+}
+>>>>>>> master
 
 .row {
 	justify-content: space-around;
@@ -211,8 +210,46 @@ label{
 
 .trash-icon {
 	cursor: pointer;
-	font-size: 2rem;
-	padding-top: 1.5rem;
+	color: red;
+	font-size: 2.5rem;
+	margin-left: 2rem;
+
+	&:hover {
+		font-style: bold;
+	}
+}
+
+.question-preview-div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.ask-delete {
+	font-style: italic;
+	color: red;
+}
+
+.btn-delete {
+	background-color: red;
+	&:hover {
+		background-color: darkred;
+	}
+}
+
+.btn-done {
+	margin-bottom: 2rem;
+	background-color: rgb(0, 197, 168);
+
+	&:hover {
+		background-color: rgb(0, 148, 126);
+	}
+}
+
+.question-preview {
+	color: white;
+	font-weight: bold;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .eachQuestion {
@@ -249,7 +286,7 @@ label{
 }
 
 .question {
-	font-size: 1rem;
+	font-size: 1.2rem;
 	color: white;
 	font-weight: bold;
 	width: 100%;
@@ -259,6 +296,7 @@ label{
 	padding-right: 0.5rem;
 	padding-left: 0.5rem;
 	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	letter-spacing: 1.5px;
 }
 
 .spinner {
@@ -283,6 +321,7 @@ label{
 
 .result {
 	margin-bottom: 8rem;
+	margin-top: 2rem;
 	font-size: 3rem;
 	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 	font-weight: bold;
@@ -294,12 +333,18 @@ i {
 	border-width: 0 3px 3px 0;
 	display: inline-block;
 	padding: 5px;
-	margin-right: 0.5rem;
   }
 
   .left {
 	transform: rotate(135deg);
 	-webkit-transform: rotate(135deg);
+	margin-right: 0.5rem;
+  }
+
+  .right {
+	transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	margin-left: 0.5rem;
   }
 
   .mainPage {
@@ -308,10 +353,30 @@ i {
 	height: 3rem;
 	border-radius: 0.75rem;
 	box-shadow: 1px 3px 2px grey;
-	margin: 4rem auto 0.25rem auto;
-	font-size: 1rem;
+	margin: 2rem auto 3rem auto;
+	font-size: 1.2rem;
 	color: white;
 	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  }
+
+  .mainPage:hover {
+	background-color: rgb(206, 204, 204);
+  }
+
+  .mainPageList {
+	background-color: rgb(0, 197, 168);
+	width: 20rem;
+	height: 3rem;
+	border-radius: 0.75rem;
+	box-shadow: 1px 3px 2px grey;
+	margin: 0 auto 0.25rem auto;
+	font-size: 1.2rem;
+	color: white;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	letter-spacing: 1.8px;
+  }
+  .mainPageList:hover {
+	background-color: rgb(0, 148, 126);
   }
 
 .btn.answerOption {
@@ -326,6 +391,7 @@ i {
 
 .eachOption {
 	background-color: rgb(243, 243, 243);
+	color: white;
 	width: 20rem;
 	height: 3rem;
 	border-radius: 0.75rem;
@@ -334,6 +400,9 @@ i {
 	margin-left: auto;
 	margin-right: auto;
 	font-size: 1rem;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	letter-spacing: 1px;
+
 }
 
 .btn.submitButton {
@@ -343,12 +412,22 @@ i {
 	border-radius: 0.75rem;
 	box-shadow: 1px 3px 2px grey;
 	margin: 6rem auto 0.25rem auto;
-	font-size: 1rem;
+	font-size: 1.5rem;
+	color: white;
+	font-weight: bold;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+
 }
+
+
+
 
 @media only screen and (min-width: 768px) {
 	.gridContainer h2{
 		font-size: 1.8rem;
+	}
+	.question {
+		font-size: 1.4rem;
 	}
 }
 
