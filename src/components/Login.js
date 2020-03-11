@@ -66,7 +66,7 @@ class Login extends React.Component{
 					: ""
 				}
 
-				<Link to="/show" className="loginLogout login-btn btn btn-success" >Play a quiz</Link>
+				<Link to="/show" className="loginLogout btn" >Play a quiz</Link>
             </div>
         )
     }
