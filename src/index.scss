@@ -365,6 +365,16 @@ i {
 	}
 }
 
+.questionLand {
+	font-size: 1.3rem;
+	color:white;
+	margin-bottom: 2rem;
+	font-weight: bold;
+	text-shadow: -1px -1px 0
+	#000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	letter-spacing: 1.5px;
+}
+
 .eachOption {
 	background-color: rgb(243, 243, 243);
 	color: white;
@@ -402,7 +412,15 @@ i {
 
 }
 
+.navigationBtn {
+	margin-bottom: 5rem;
+}
 
+.navigationBtn img {
+	width: 10rem;
+	height: 10rem;
+}
+ 
 
 
 @media only screen and (min-width: 768px) {
