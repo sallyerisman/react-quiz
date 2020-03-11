@@ -57,7 +57,7 @@ class ShowQuizzes extends React.Component {
         const showTitle = this.state.quizTitles.map((title, i) => {
             return (
                 <div key={i} className="quiz-list">
-                	<Link className="mainPageList" to={"/play/" + title.id}>{title.title}<i class="arrow right"></i></Link>
+                	<Link className="mainPageList" to={"/play/" + title.id}>{title.title}<i className="arrow right"></i></Link>
                 </div>
             )
 		})
