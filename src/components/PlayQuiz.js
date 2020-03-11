@@ -17,6 +17,7 @@ class PlayQuiz extends React.Component{
 		answers: [],
 		showSpinner: false,
 		errorMsg: false,
+		quizSubmitted: false,
 	}
 
     componentDidMount() {
@@ -33,10 +34,11 @@ class PlayQuiz extends React.Component{
 			const quiz = [];
 			const answers = [];
             snapshot.data().quizItems.forEach((item) => {
+				let randomOptions = item.options.sort(function (a, b) { return 0.5 - Math.random() }) 
                 const quizItem = {
                     question: item.question,
                     correctAnswer: item.correctAnswer,
-					options: item.options,
+					options: randomOptions,
 					id: item.id,
 				}
 
@@ -75,6 +77,7 @@ class PlayQuiz extends React.Component{
 
 		this.setState({
 			points,
+			quizSubmitted: true,
 		});
 	}
 
@@ -85,7 +88,7 @@ class PlayQuiz extends React.Component{
 		answers[qiIndex] = e.target.value;
 
 		this.setState({
-			answers: answers
+			answers: answers,
 		});
 
 	}
@@ -100,7 +103,7 @@ class PlayQuiz extends React.Component{
 							<h2 className="question">{item.question}</h2>
 						</div>
 					</div>
-					<PlayOptions options={item.options} radioId={this.state.quizItems}  onSelection={e => { this.handleChange(e, qiIndex) }}/>
+					<PlayOptions options={item.options} answers={this.state.answers} radioId={this.state.quizItems}  onSelection={e => { this.handleChange(e, qiIndex) }} quizIsSubmitted={this.state.quizSubmitted} correctAnswer={item.correctAnswer} isMarked={this.state.isClicked} />
 				</div>
 			)
         })
