@@ -8,15 +8,19 @@
 }
 
 a {
-  align-items: center;
-  border-radius: 0.5rem;
-  color: #FAA094FF;
-  display: flex;
-  font-size: 1.5rem;
-  height: 100%;
-  justify-content: center;
-  text-decoration: none;
-  width: 100%;
+	align-items: center;
+	display: flex;
+	height: 100%;
+	justify-content: center;
+	text-decoration: none;
+	font-size: 1rem;
+	color: white;
+	font-weight: bold;
+	width: 100%;
+	border-radius: 0.5rem;
+	padding-right: 0.5rem;
+	padding-left: 0.5rem;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 a:hover {
@@ -72,36 +76,16 @@ input{
 // 	margin-top: 0.5rem;
 // }
 
-.btn {
-	background-color: #FAA094FF;
-	padding: 0 1.5rem;
-}
-
 .btn:hover {
 	background-color: rgb(156, 156, 156);
 	color: white;
 }
 
-.login-btn{
-	font-size: 1.5rem;
-}
-
 .card {
   border: none;
   margin: 1.5rem;
-  background-color: #FAA094FF;
   height: 300px;
   justify-content: space-between;
-  padding: 0;
-}
-
-.card a {
-	color: #FFDDE2FF;
-}
-
-.card a:hover {
-	color: #FFDDE2FF;
-	background-color: rgb(228, 144, 133);
 }
 
 .container{
@@ -131,34 +115,42 @@ input{
 	justify-content: flex-start;
 }
 
-.mainPage{
-	color: #FAA094FF;
+.loginLogout {
+	background-color: rgb(243, 243, 243);
+    width: 6rem;
+    border-radius: 0.75rem;
+    box-shadow: 1px 3px 2px grey;
+    font-size: 1rem;
+	color: black;
 }
 
-.mainPage:hover{
-	background-color: #008C76FF;
-	color: #FFDDE2FF;
-}
+// .mainPage{
+// 	color: #FAA094FF;
+// }
+
+// .mainPage:hover{
+// 	background-color: #008C76FF;
+// 	color: #FFDDE2FF;
+// }
 
 .navbar {
-	background-color: #9ED9CCFF;
+	flex-wrap: nowrap;
 	margin-bottom: 1rem;
 	width: 100vw;
 }
 
-.nav-link {
-	color: #FAA094FF;
-	font-size: 1.5rem;
-	align-items: center;
-	border-radius: 0.5rem;
-	text-decoration: none;
-}
+// .nav-link {
+// 	font-size: 1.5rem;
+// 	align-items: center;
+// 	border-radius: 0.5rem;
+// 	text-decoration: none;
+// }
 
-.nav-link:hover {
-	color: #FFDDE2FF;
-	text-decoration: none;
-	cursor: pointer;
-}
+// .nav-link:hover {
+// 	color: #FFDDE2FF;
+// 	text-decoration: none;
+// 	cursor: pointer;
+// }
 
 .navbar-brand {
 	color: #FAA094FF;
