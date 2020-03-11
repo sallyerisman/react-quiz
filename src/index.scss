@@ -26,6 +26,8 @@ a:hover {
 
 body {
   background-color: rgb(243, 173, 21);
+  background-image: url(./images/v-background.jpg);
+	background-position: center;
   color: #FFDDE2FF;
   font-family: 'Roboto', sans-serif;
   text-align: center;
@@ -35,7 +37,7 @@ form,
 .quiz-list{
 	margin: 1rem 0;
 	border-radius: 0.5rem;
-	background-color: rgb(243, 173, 21);
+	background-color: transparent;
 	padding: 2rem;
 }
 
@@ -173,6 +175,10 @@ input{
 	width: 100%;
 }
 
+.allQuizHead {
+	margin-top: 5rem;
+}
+
 .trash-icon {
 	cursor: pointer;
 	font-size: 2rem;
@@ -241,9 +247,37 @@ input{
   }
 
 .result {
-	margin-bottom: 5rem;
+	margin-bottom: 8rem;
 	font-size: 3rem;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	font-weight: bold;
+	color: white;
 }
+
+i {
+	border: solid black;
+	border-width: 0 3px 3px 0;
+	display: inline-block;
+	padding: 5px;
+	margin-right: 0.5rem;
+  }
+
+  .left {
+	transform: rotate(135deg);
+	-webkit-transform: rotate(135deg);
+  }
+
+  .mainPage {
+	background-color: rgb(243, 243, 243);
+	width: 20rem;
+	height: 3rem;
+	border-radius: 0.75rem;
+	box-shadow: 1px 3px 2px grey;
+	margin: 4rem auto 0.25rem auto;
+	font-size: 1rem;
+	color: white;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  }
 
 .btn.answerOption {
 	background-color:rgb(0, 197, 168);
@@ -264,6 +298,16 @@ input{
 	margin-bottom: 0.25rem;
 	margin-left: auto;
 	margin-right: auto;
+	font-size: 1rem;
+}
+
+.btn.submitButton {
+	background-color: rgb(0, 197, 168);
+	width: 20rem;
+	height: 3rem;
+	border-radius: 0.75rem;
+	box-shadow: 1px 3px 2px grey;
+	margin: 6rem auto 0.25rem auto;
 	font-size: 1rem;
 }
 

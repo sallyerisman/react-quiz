@@ -116,11 +116,11 @@ class PlayQuiz extends React.Component{
 					? this.state.errorMsg
 					: (
 						<div>
-							<Link className="mainPage" to="/show">Back to quiz page</Link>
+							<Link className="mainPage" to="/show"><i className="arrow left"></i>Back to quiz page</Link>
 							<form onSubmit={this.handleSubmit}>
 								<h1>{this.state.title}</h1>
 								{quizItem}
-								<button className="btn">Submit</button>
+								<button className="btn submitButton">Submit</button>
 							</form>
 
 							<h3 className="result">Your score is: {this.state.points}/{this.state.answers.length}</h3>
