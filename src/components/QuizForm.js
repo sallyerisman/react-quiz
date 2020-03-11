@@ -157,6 +157,16 @@ class QuizForm extends React.Component{
 
 	handleSubmit = (e) => {
 		e.preventDefault();
+
+		let question = this.state.question
+
+		if(question.charAt(question.length -1) !== '?'){
+			question += '?'
+			this.setState({
+				question: question
+			})
+		}
+
 		this.setQuizItems();
 	}
 

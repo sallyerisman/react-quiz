@@ -4,19 +4,21 @@ class PreviewOptions extends React.Component {
 	render() {
 		const options = this.props.options.map((option, j) => {
 			return (
-				<label key={j}>
-					<input
-						type="checkbox"
-						name="option"
-					/> {option}
-				</label>
+				<li className="list-group-item">
+					<label key={j}>
+						<input
+							type="checkbox"
+							name="option"
+						/> {option}
+					</label>
+				</li>
 			)
 		})
 
 		return (
-			<div>
+			<ul className="list-group">
 				{options}
-			</div>
+			</ul>
 		)
 	}
 }
