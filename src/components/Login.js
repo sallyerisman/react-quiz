@@ -39,7 +39,7 @@ class Login extends React.Component{
 
                 <form id="login-form" onSubmit={this.handleSubmit}>
                     <div className="form-group">
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="email" className="text-decoration" >Email</label>
                         <input
                             type="email"
                             id="email"
@@ -47,7 +47,7 @@ class Login extends React.Component{
                             onChange={this.handleChange}
                             />
 
-                        <label htmlFor="password">Password</label>
+                        <label htmlFor="password" className="text-decoration" >Password</label>
                         <input
                             type="password"
                             id="password"
@@ -57,7 +57,7 @@ class Login extends React.Component{
                     </div>
 
                     <div className="d-flex justify-content-end">
-                        <button type="submit" className="btn loginLogout">Log in</button>
+                        <button type="submit" className="btn text-decoration loginLogout">Log in</button>
                     </div>
                 </form>
 
@@ -66,7 +66,7 @@ class Login extends React.Component{
 					: ""
 				}
 
-				<Link to="/show" className="loginLogout btn" >Play a quiz</Link>
+				<Link to="/show" className="loginLogout text-decoration btn" >Play a quiz</Link>
             </div>
         )
     }

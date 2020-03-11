@@ -20,7 +20,7 @@ const Navigation = props => {
 			</Link>
 			{
 				auth.currentUser
-				? <span className="loginLogout nav-link" onClick={handleSignOut}>Log out</span>
+				? <span className="loginLogout text-decoration nav-link" onClick={handleSignOut}>Log out</span>
 				: ''
 			}
 		</nav>
