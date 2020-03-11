@@ -13,13 +13,15 @@ class LandingPage extends React.Component{
     render() {
         return (
 			<div className="container">
-				<h1>Quiz</h1>
+				<h1 className="headLand">Quiz</h1>
 				<main className="row">
-					<div className="questionBackgroundTwo card col-sm-12 col-md-5">
-						<Link className="questionBackground" to="/create">Make your own quiz</Link>
+					<div className="col-sm-12 col-md-5 navigationBtn">
+					<h2 className="questionLand">Create Quiz</h2>
+						<Link to="/create"><img src={require("./images/circle-plus-two.png")}/> </Link>
 					</div>
-					<div className="questionBackgroundTwo card col-sm-12 col-md-5">
-						<Link className="questionBackground" to="/show">Try a quiz</Link>
+					<div className="col-sm-12 col-md-5 navigationBtn">
+					<h2 className="questionLand">Play Quiz</h2>
+						<Link to="/show"><img src={require("./images/play-button-two.png")}/></Link>
 					</div>
 				</main>
 			</div>

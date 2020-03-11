@@ -162,24 +162,27 @@ label{
 	width: 100vw;
 }
 
-// .nav-link {
-// 	font-size: 1.5rem;
-// 	align-items: center;
-// 	border-radius: 0.5rem;
-// 	text-decoration: none;
-// }
+.navigationBtn {
+	margin-bottom: 6rem;
+}
+.navigationBtn img {
+	width: 10rem;
+	height: 10rem;
+	margin: auto;
+}
 
-// .nav-link:hover {
-// 	color: #FFDDE2FF;
-// 	text-decoration: none;
-// 	cursor: pointer;
-// }
+.headLand{
+	margin-top: 4rem;
+	margin-bottom: 6rem;
+}
 
-// .navbar-brand {
-// 	color: #FAA094FF;
-// 	font-size: 1.5rem;
-// 	margin: 0;
-// }
+.questionLand {
+	font-size: 1.3rem;
+	color: white;
+	font-weight: bold;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	letter-spacing: 1.5px;
+}
 
 .row {
 	justify-content: space-around;
@@ -249,6 +252,7 @@ label{
 }
 
 .questionBackgroundTwo {
+	max-width: 620px;
 	background-color: rgb(0, 197, 168);
 	display: flex;
 	padding: 0.5rem 0.5rem;
@@ -263,6 +267,10 @@ label{
 	margin: auto;
 	width: 95%;
 	background-color: white;
+	background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 0%,rgba(255, 255, 255, 0.8) 100%),url(./images/blue-quest.png);
+	background-size: 5.5rem;
+	background-position: top right;
+	background-repeat: no-repeat;
 	height: 13rem;
 	border-radius: 0.5rem;
 	margin-bottom: 0.8rem;
@@ -309,6 +317,8 @@ label{
 .error {
 	font-size: 1.5rem;
 	margin-bottom: 5rem;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	color: white;
 }
 
 .result {
@@ -345,7 +355,7 @@ i {
 	height: 3rem;
 	border-radius: 0.75rem;
 	box-shadow: 1px 3px 2px grey;
-	margin: 2rem auto 3rem auto;
+	margin: 4rem auto 3rem auto;
 	font-size: 1.2rem;
 	color: white;
 	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
