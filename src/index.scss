@@ -46,8 +46,10 @@ body {
 	background-color: rgb(243, 173, 21);
 	background-image: url(./images/v-background.jpg);
 	background-position: center;
+	background-size: 100%;
 	color: #FFDDE2FF;
 	font-family: 'Roboto', sans-serif;
+	max-width: 1100px;
 	text-align: center;
 }
 
@@ -73,12 +75,7 @@ h1 {
 
 img{
 	height: 7rem;
-	margin-left: 1rem;
 	width: 7rem;
-}
-
-input{
-	margin-right: 1rem;
 }
 
 // label{
@@ -95,19 +92,30 @@ label{
 	margin-top: 1rem;
 }
 
+#login-form .form-group{
+	text-align: start;
+}
+
 .btn:hover {
 	background-color: rgb(156, 156, 156);
 	color: white;
 }
 
-#login-form .form-group{
-	text-align: start;
+.btn-question{
+	background-color: rgb(0, 197, 168);
+	color: white;
+	font-size: 1rem;
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	width: 5.5rem;
+	&:hover{
+		background-color: rgb(0, 119, 101);
+	}
 }
 
 .card {
   border: none;
-  margin: 1.5rem;
   height: 300px;
+  margin: 1.5rem;
   justify-content: space-between;
 }
 
@@ -156,9 +164,7 @@ label{
 .navbar {
 	flex-wrap: nowrap;
 	margin-bottom: 1rem;
-	padding: 0;
-	padding-top: 1rem;
-	padding-right: 1rem;
+	padding: 2rem 1rem;
 	width: 100vw;
 }
 
@@ -189,13 +195,13 @@ label{
 }
 
 .submit {
-	padding: 0.5rem;
+	padding: 0.7rem;
 	width: 100%;
 }
 
 .text-decoration{
 	color: white;
-	font-size: 1rem;
+	font-size: 1.2rem;
 	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
@@ -226,6 +232,9 @@ label{
 }
 
 .btn-delete {
+	width: 20rem;
+	height: 3rem;
+	padding: 0.7rem 0;
 	background-color: red;
 	&:hover {
 		background-color: darkred;
@@ -233,6 +242,8 @@ label{
 }
 
 .btn-done {
+	width: 20rem;
+	height: 3rem;
 	margin-bottom: 2rem;
 	background-color: rgb(0, 197, 168);
 
@@ -261,6 +272,10 @@ label{
 	height: 14.5rem;
 	border: 0.5px solid  rgb(1, 139, 118);
 	box-shadow: 1px 3px 2px grey;
+}
+
+.questionBackgroundTwo.card:hover{
+	background-color: rgb(0, 167, 142);
 }
 
 .questionBackground {
@@ -312,7 +327,7 @@ label{
 	-webkit-transform: translateZ(0);
 	-ms-transform: translateZ(0);
 	transform: translateZ(0);
-  }
+}
 
 .error {
 	font-size: 1.5rem;
@@ -335,21 +350,21 @@ i {
 	border-width: 0 3px 3px 0;
 	display: inline-block;
 	padding: 5px;
-  }
+}
 
-  .left {
+.left {
 	transform: rotate(135deg);
 	-webkit-transform: rotate(135deg);
 	margin-right: 0.5rem;
-  }
+}
 
-  .right {
+.right {
 	transform: rotate(-45deg);
 	-webkit-transform: rotate(-45deg);
 	margin-left: 0.5rem;
-  }
+}
 
-  .mainPage {
+.mainPage {
 	background-color: rgb(243, 243, 243);
 	width: 20rem;
 	height: 3rem;
@@ -359,13 +374,13 @@ i {
 	font-size: 1.2rem;
 	color: white;
 	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-  }
+}
 
-  .mainPage:hover {
+.mainPage:hover {
 	background-color: rgb(206, 204, 204);
-  }
+}
 
-  .mainPageList {
+.mainPageList {
 	background-color: rgb(0, 197, 168);
 	width: 20rem;
 	height: 3rem;
@@ -376,19 +391,19 @@ i {
 	color: white;
 	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 	letter-spacing: 1.8px;
-  }
-  .mainPageList:hover {
+}
+
+.mainPageList:hover {
 	background-color: rgb(0, 148, 126);
-  }
+}
 
 .btn.answerOption {
 	background-color:rgb(0, 197, 168);
 	color: white;
 	box-shadow: 0px;
-}
-
-.btn.answerOption:hover{
-	background-color: rgb(0, 119, 101);
+	&:hover{
+		background-color: rgb(0, 119, 101);
+	}
 }
 
 .eachOption {
@@ -431,7 +446,13 @@ i {
 	.question {
 		font-size: 1.4rem;
 	}
+
+	.navbar {
+		padding: 2rem 3rem;
+	}
 }
+
+
 
 
   @-webkit-keyframes load5 {

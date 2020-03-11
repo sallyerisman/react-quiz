@@ -32,7 +32,7 @@ class PlayQuiz extends React.Component{
         .then((snapshot) => {
 			const quiz = [];
 			const answers = [];
-            snapshot.data().quizItems.map((item) => {
+            snapshot.data().quizItems.forEach((item) => {
                 const quizItem = {
                     question: item.question,
                     correctAnswer: item.correctAnswer,

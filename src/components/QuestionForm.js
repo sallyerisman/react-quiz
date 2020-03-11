@@ -27,7 +27,7 @@ const QuestionForm = props => {
 				/>
 				<div className="input-group-append">
 					<button
-						className="btn btn-secondary"
+						className="btn btn-question"
 						type="button"
 						id="button-addon2"
 						onClick={onClick}
@@ -52,7 +52,7 @@ const QuestionForm = props => {
 
 								<div className="input-group-append">
 									<button
-										className="btn btn-secondary"
+										className="btn-question btn"
 										type="button"
 										id="button-addon2"
 										onClick={onClick}
@@ -67,7 +67,7 @@ const QuestionForm = props => {
 			}
 
 			<button
-				className="btn btn-secondary submit"
+				className="btn-question btn btn-secondary submit"
 				type="submit"
 				id="submit-btn"
 			>Add another question

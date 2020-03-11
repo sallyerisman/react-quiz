@@ -19,7 +19,7 @@ const TitleForm = props => {
 
 				<div className="input-group-append">
 					<button
-						className="btn btn-secondary"
+						className="btn-question btn"
 						type="submit"
 						id="button-addon2"
 					>Add
