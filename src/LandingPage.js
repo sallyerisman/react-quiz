@@ -15,11 +15,11 @@ class LandingPage extends React.Component{
 			<div className="container">
 				<h1>Quiz</h1>
 				<main className="row">
-					<div className="card col-sm-12 col-md-5">
-						<Link to="/create">Make your own quiz</Link>
+					<div className="questionBackgroundTwo card col-sm-12 col-md-5">
+						<Link className="questionBackground" to="/create">Make your own quiz</Link>
 					</div>
-					<div className="card col-sm-12 col-md-5">
-						<Link to="/show">Try a quiz</Link>
+					<div className="questionBackgroundTwo card col-sm-12 col-md-5">
+						<Link className="questionBackground" to="/show">Try a quiz</Link>
 					</div>
 				</main>
 			</div>
