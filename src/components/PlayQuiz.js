@@ -93,7 +93,7 @@ class PlayQuiz extends React.Component{
     render() {
         const quizItem = this.state.quizItems.map((item, qiIndex) => {
 			return (
-				<div key={qiIndex} className="eachQuestion container">
+				<div key={qiIndex} className="eachQuestion container col-md-10 col-lg-6">
 					<h2 className="questionNumb">Question {qiIndex + 1} of {this.state.answers.length}</h2>
 					<div className="questionBackgroundTwo">
 						<div className="questionBackground">
